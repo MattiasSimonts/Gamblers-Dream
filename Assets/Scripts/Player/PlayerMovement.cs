@@ -102,7 +102,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
+            IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
+            if (hoveringInteractable.CanInteract)
+                hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
         }
     }
     public void AddCoins(int amount)
@@ -138,8 +140,15 @@ public class PlayerMovement : MonoBehaviour
 
         HandleFOV(Time.deltaTime);
 
-        _leftClickToInteract.SetActive(Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, _interactionRange, _interactionLayer));
-
+        if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
+        {
+            IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
+            _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
+        }
+        else
+        {
+            _leftClickToInteract.SetActive(false);
+        }
     }
 
     private void HandleFOV(float deltaTime)
