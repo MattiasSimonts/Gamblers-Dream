@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1846,6 +1846,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3242372321408754643, guid: 53743d9272f481444af96f02055e5da0, type: 3}
   m_PrefabInstance: {fileID: 739454042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &754484464
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.242631
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000003597343
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02885345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799157962319895518, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632842744049577243, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: m_Name
+      value: Clock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872401297669311183, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 165610733}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
 --- !u!1001 &765045846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2036,6 +2097,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClockScript
   _player: {fileID: 165610733}
   _agent: {fileID: 787882928}
+  _speed: 1
+  _damage: 50
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &883822020
 GameObject:
   m_ObjectHideFlags: 0
@@ -4702,3 +4768,4 @@ SceneRoots:
   - {fileID: 84146372}
   - {fileID: 1151276255}
   - {fileID: 787882929}
+  - {fileID: 754484464}
