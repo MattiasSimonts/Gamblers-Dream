@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _interactionRange;
     [SerializeField] private LayerMask _interactionLayer;
 
+    [SerializeField] private float _gravity;
+
     [SerializeField] private PlayerHP _playerHP;
     [SerializeField] private float _sprintHPUsagePerSecond;
 
@@ -141,6 +143,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (!_characterController.isGrounded)
+        {
+            _movementVelocity += Vector3.down * _gravity;
+        }
 
         _characterController.Move(_movementVelocity);
     }
