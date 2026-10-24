@@ -2,6 +2,7 @@ using Assets.Scripts;
 using Assets.Scripts.Player;
 using DG.Tweening;
 using System;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _pickupAudioResource;
 
-    private PlayerCoins _coins;
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -50,7 +50,32 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private Vector3 _input;
+    [SerializeField] private TextMeshProUGUI _coinsDisplayText;
+    private int _coins;
 
+    public int Coins
+    {
+        get { return _coins; }
+        set
+        {
+            if (value == _coins)
+                return;
+            _coins = value;
+
+            UpdateCoinVisual();
+        }
+    }
+
+    private void UpdateCoinVisual()
+    {
+        _coinsDisplayText.text = Coins.ToString();
+    }
+
+    [SerializeField] private int _startingCoins;
+    private void Start()
+    {
+        Coins = _startingCoins;
+    }
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -71,8 +96,6 @@ public class PlayerMovement : MonoBehaviour
         _interact.performed += Interact;
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        _coins = GetComponent<PlayerCoins>();
     }
 
     private void Interact(InputAction.CallbackContext obj)
@@ -84,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void AddCoins(int amount)
     {
-        _coins.Coins += amount;
+        Coins += amount;
 
         _audioSource.resource = _pickupAudioResource;
         _audioSource.Play();
