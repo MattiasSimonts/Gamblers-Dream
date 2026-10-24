@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Scripts;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -34,6 +35,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private float _coinSpewAngleSpread = 5.0f;
     [SerializeField] private float _coinInterval = 0.02f;
     [SerializeField] private float _coinSpinSpeed = 1f;
+    [SerializeField] private List<GameObject> _enabledIndicatorGameobject = new List<GameObject>();
 
     [Header("Weights")] [SerializeField] private float _generalWeight = 2f;
     [SerializeField] private float _0DegreeCoinsValue = 1f;
@@ -49,15 +51,48 @@ public class SlotMachine : MonoBehaviour
     private int _baseAmountOfCoins = 0;
 
     private float _timer = 8.0f;
+    [SerializeField] private AudioSource _slotAudioSource;
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioResource _slotClickSoundEffect;
+    [SerializeField] private AudioResource _bellSoundEffect;
+    [SerializeField] private AudioResource _leverSoundEffect;
+    [SerializeField] private AudioResource _winSoundEffect;
 
+    [SerializeField] private bool _startEnabled;
+
+    private Tween _moveAnimation;
 
     private Dictionary<string, (float, float)> _rotationMap;
+
+    private bool _isEnabled = true;
+
+    public bool IsEnabled
+    {
+        get { 
+            return _isEnabled;
+        }
+        set {
+            if (value == _isEnabled)
+                return;
+            _isEnabled = value;
+            UpdateEnabledVisual();
+        }
+    }
+
+    private void UpdateEnabledVisual()
+    {
+        foreach (GameObject gameObject in _enabledIndicatorGameobject)
+        {
+            gameObject.SetActive(IsEnabled);
+        }
+    }
 
     private void FixedUpdate()
     {
         if (_isSpinning)
         {
             _barrelSpinTimePast += Time.fixedDeltaTime;
+
             if (_barrelSpinTimePast >= _barrelSpinTime)
             {
                 _spinningBarrels--;
@@ -65,13 +100,19 @@ public class SlotMachine : MonoBehaviour
                 {
                     _barrelsTransforms[_spinningBarrels].localRotation = Quaternion.Euler(_rotationMap[_results[_spinningBarrels]].Item1, 0, 0);
                     _barrelSpinTimePast -= _delayBetweenBarrels;
+                    transform.DOPunchScale(new Vector3(-0.05f,0.1f,-0.05f), 0.1f, 0, 0);
+                    PlaySound(_bellSoundEffect);
                 }
                 else
                 {
+                    _moveAnimation.Kill();
+                    transform.localScale = Vector3.one;
                     _barrelSpinTimePast = 0f;
                     _isSpinning = false;
                     print($"startcoins: {_amountOfCoins}");
                     StartCoroutine(SpewCoins(Mathf.RoundToInt(_amountOfCoins)));
+                    _slotAudioSource.Stop();
+                    PlaySound(_winSoundEffect);
                 }
             }
 
@@ -93,6 +134,12 @@ public class SlotMachine : MonoBehaviour
                 Spin();
             }
         }
+    }
+
+    private void PlaySound(AudioResource audioResource)
+    {
+        _AudioSource.resource = audioResource;
+        _AudioSource.Play();
     }
 
     private void Awake()
@@ -117,6 +164,7 @@ public class SlotMachine : MonoBehaviour
             _results[i] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
             _barrelsTransforms[i].localRotation = Quaternion.Euler(_rotationMap[_results[i]].Item1, 0, 0);
         }
+        IsEnabled = _startEnabled;
     }
 
     private IEnumerator SpewCoins(int amount)
@@ -152,16 +200,22 @@ public class SlotMachine : MonoBehaviour
             new Vector3(0, 0, 0),
             _leverSpeed);
         _spinningBarrels = _barrelsTransforms.Length;
+
         _isSpinning = true;
+
+        _slotAudioSource.Play();
+
+        _moveAnimation = transform.DOShakeScale(1000f, 0.02f, 10, 30, false, ShakeRandomnessMode.Harmonic);
+
         GetSpinResults();
     }
 
     public void Spin()
     {
-        if (_isSpinning)
+        if (_isSpinning || !_isEnabled)
             return;
         StartCoroutine(SpinHandle());
-        
+        PlaySound(_leverSoundEffect);
     }
 
     private void GetSpinResults()
