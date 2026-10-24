@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Scripts;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -49,6 +50,11 @@ public class SlotMachine : MonoBehaviour
     private int _baseAmountOfCoins = 0;
 
     private float _timer = 8.0f;
+    [SerializeField] private AudioSource _slotAudioSource;
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioResource _slotClickSoundEffect;
+    [SerializeField] private AudioResource _bellSoundEffect;
+    [SerializeField] private AudioResource _winSoundEffect;
 
 
     private Dictionary<string, (float, float)> _rotationMap;
@@ -58,6 +64,7 @@ public class SlotMachine : MonoBehaviour
         if (_isSpinning)
         {
             _barrelSpinTimePast += Time.fixedDeltaTime;
+
             if (_barrelSpinTimePast >= _barrelSpinTime)
             {
                 _spinningBarrels--;
@@ -65,6 +72,7 @@ public class SlotMachine : MonoBehaviour
                 {
                     _barrelsTransforms[_spinningBarrels].localRotation = Quaternion.Euler(_rotationMap[_results[_spinningBarrels]].Item1, 0, 0);
                     _barrelSpinTimePast -= _delayBetweenBarrels;
+                    PlaySound(_bellSoundEffect);
                 }
                 else
                 {
@@ -72,6 +80,8 @@ public class SlotMachine : MonoBehaviour
                     _isSpinning = false;
                     print($"startcoins: {_amountOfCoins}");
                     StartCoroutine(SpewCoins(Mathf.RoundToInt(_amountOfCoins)));
+                    _slotAudioSource.Stop();
+                    PlaySound(_winSoundEffect);
                 }
             }
 
@@ -93,6 +103,12 @@ public class SlotMachine : MonoBehaviour
                 Spin();
             }
         }
+    }
+
+    private void PlaySound(AudioResource audioResource)
+    {
+        _AudioSource.resource = audioResource;
+        _AudioSource.Play();
     }
 
     private void Awake()
@@ -152,7 +168,11 @@ public class SlotMachine : MonoBehaviour
             new Vector3(0, 0, 0),
             _leverSpeed);
         _spinningBarrels = _barrelsTransforms.Length;
+
         _isSpinning = true;
+
+        _slotAudioSource.Play();
+
         GetSpinResults();
     }
 
