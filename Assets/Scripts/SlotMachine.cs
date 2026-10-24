@@ -35,26 +35,31 @@ public class SlotMachine : MonoBehaviour
     {
         if (_isSpinning)
         {
+            
             _barrelSpinTimePast += Time.fixedDeltaTime;
             if (_barrelSpinTimePast >= _barrelSpinTime)
             {
                 _spinningBarrels--;
                 if(_spinningBarrels > 0)
-                    _barrelsTransforms[_spinningBarrels].rotation = Quaternion.Euler(0,0,0);
+                    _barrelsTransforms[_spinningBarrels].rotation = Quaternion.Euler(90,0,0);
                 
                 if(_spinningBarrels >= 0)
                     _barrelSpinTimePast -= _delayBetweenBarrels;
                 
                 else
                 {
+                    _barrelSpinTimePast = 0f;
                     _isSpinning = false;
                     StartCoroutine(SpewCoins(20));
                     
                 }
             }
-            for (int i = 0; i < _spinningBarrels; i++)
+            if(_spinningBarrels > 0)
             {
-                _barrelsTransforms[i].Rotate(_barrelSpinSpeed*Time.deltaTime,0,0);
+                for (int i = 0; i < _spinningBarrels; i++)
+                {
+                    _barrelsTransforms[i].Rotate(_barrelSpinSpeed * Time.deltaTime, 0, 0);
+                }
             }
         }
         

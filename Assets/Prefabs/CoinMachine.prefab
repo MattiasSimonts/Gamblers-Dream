@@ -134,6 +134,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3242372321408754643}
     m_Modifications:
+    - target: {fileID: -8766406888683407738, guid: c4d02578691a9224488c5bed190e6442, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1915b49bd00aa3240b6452b80e4c748b, type: 2}
     - target: {fileID: -8679921383154817045, guid: c4d02578691a9224488c5bed190e6442, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174,6 +178,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1116097053491663983, guid: c4d02578691a9224488c5bed190e6442, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1915b49bd00aa3240b6452b80e4c748b, type: 2}
+    - target: {fileID: -898156319271767231, guid: c4d02578691a9224488c5bed190e6442, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1915b49bd00aa3240b6452b80e4c748b, type: 2}
     - target: {fileID: 919132149155446097, guid: c4d02578691a9224488c5bed190e6442, type: 3}
       propertyPath: m_Name
       value: Slotmachine
