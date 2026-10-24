@@ -34,7 +34,7 @@ namespace Assets.Scripts.Player
 
             if (_healthbarTween == null)
             {
-                _healthbarTween = _healthBar.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1.5f, 1, 0f);
+                _healthbarTween = _healthBar.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1.0f, 1, 0f);
                 _healthbarTween.onComplete = DeleteTween;
             }
         }
