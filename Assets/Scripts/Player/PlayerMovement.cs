@@ -4,6 +4,7 @@ using DG.Tweening;
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -32,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerHP _playerHP;
     [SerializeField] private float _sprintHPUsagePerSecond;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioResource _pickupAudioResource;
 
     private PlayerCoins _coins;
 
@@ -82,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
     public void AddCoins(int amount)
     {
         _coins.Coins += amount;
+
+        _audioSource.resource = _pickupAudioResource;
+        _audioSource.Play();
     }
     private void SprintCanceled(InputAction.CallbackContext obj)
     {
