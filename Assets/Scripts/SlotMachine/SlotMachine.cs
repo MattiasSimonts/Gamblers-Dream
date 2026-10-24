@@ -19,7 +19,7 @@ public class SlotMachine : MonoBehaviour
     private int _spinningBarrels = 0;
     private float _barrelSpinTimePast = 0f;
     private bool _isSpinning = false;
-
+    public bool IsSpinning => _isSpinning;
 
     [Header("Lever")] 
     [SerializeField] private Transform _leverTransform;
@@ -183,4 +183,8 @@ public class SlotMachine : MonoBehaviour
     {
         _baseAmountOfCoins++;
     }
+    
+    public bool HasCoins => _baseAmountOfCoins > 0;
+
+
 }

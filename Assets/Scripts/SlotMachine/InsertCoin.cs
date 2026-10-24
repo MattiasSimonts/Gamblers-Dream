@@ -12,8 +12,14 @@ public class InsertCoin : MonoBehaviour, IInteractable
         _slotMachine = _slotMachineParent.GetComponent<SlotMachine>();
     }
 
-    public void OnInteract()
+    public void OnInteract(PlayerMovement playerMovement)
     {
-        _slotMachine.InsertCoin();
+        if (playerMovement.Coins >= 1)
+        {
+            _slotMachine.InsertCoin();
+            playerMovement.AddCoins(-1);
+        }
     }
+
+    public bool CanInteract => !_slotMachine.IsSpinning;
 }
