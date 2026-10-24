@@ -10,6 +10,7 @@ public class ClockManager : MonoBehaviour
 {
     [SerializeField] private string _clockSpawnerTag = "ClockSpawner";
     [SerializeField] private float _minDistanceFromPlayerToSpawner = 100f;
+    [SerializeField] private float _spawnInterval = 15f;
     
     private List<ClockSpawner> _clockSpawners = new List<ClockSpawner>();
     private Transform _player;
@@ -43,9 +44,9 @@ public class ClockManager : MonoBehaviour
     private void FixedUpdate()
     {
         _timer += Time.fixedDeltaTime;
-        if (_timer >= 1f)
+        if (_timer >= _spawnInterval)
         {
-            _timer -= 1f;
+            _timer -= _spawnInterval;
             SpawnClock();
         }
     }
