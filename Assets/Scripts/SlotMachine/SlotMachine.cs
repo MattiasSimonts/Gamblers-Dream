@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -36,7 +37,6 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private float _coinSpinSpeed = 1f;
 
     [Header("Weights")] 
-    [SerializeField] private int _baseAmountOfCoins = 1;
     [SerializeField] private float _generalWeight = 2f;
     [SerializeField] private float _0DegreeCoinsValue = 1f;
     [SerializeField] private float _45DegreeCoinsValue = 1f;
@@ -48,8 +48,9 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private float _315DegreeCoinsValue = 1f;
     private readonly string[] _results = new string[3];
     private float _amountOfCoins;
+    private int _baseAmountOfCoins = 0;
 
-    private float _timer = 0.0f;
+    private float _timer = 8.0f;
 
 
     private Dictionary<string, (float, float)> _rotationMap;
@@ -125,6 +126,7 @@ public class SlotMachine : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
+            print("coin");
             Transform coinSpewPosition = _coinSpewTransforms[Random.Range(0, _coinSpewTransforms.Length)];
             Quaternion rotation = Quaternion.Euler(Random.Range(0, 180), 0, Random.Range(0, 180));
             GameObject coin = Instantiate(_coinPrefab, coinSpewPosition.position, rotation);
@@ -173,7 +175,12 @@ public class SlotMachine : MonoBehaviour
             _amountOfCoins *= (_rotationMap[randomResult].Item2 + _generalWeight);
 
 
-            _results[Random.Range(0, _barrelsTransforms.Length) - 1] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
+            _results[Random.Range(0, _barrelsTransforms.Length-1)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
         }
+    }
+
+    public void InsertCoin()
+    {
+        _baseAmountOfCoins++;
     }
 }
