@@ -71,14 +71,15 @@ public class SlotMachine : MonoBehaviour
                 _spinningBarrels--;
                 if (_spinningBarrels >= 0)
                 {
-                    _moveAnimation.Kill();
-                    transform.localScale = Vector3.one;
                     _barrelsTransforms[_spinningBarrels].localRotation = Quaternion.Euler(_rotationMap[_results[_spinningBarrels]].Item1, 0, 0);
                     _barrelSpinTimePast -= _delayBetweenBarrels;
+                    transform.DOPunchScale(new Vector3(-0.05f,0.1f,-0.05f), 0.1f, 0, 0);
                     PlaySound(_bellSoundEffect);
                 }
                 else
                 {
+                    _moveAnimation.Kill();
+                    transform.localScale = Vector3.one;
                     _barrelSpinTimePast = 0f;
                     _isSpinning = false;
                     print($"startcoins: {_amountOfCoins}");
