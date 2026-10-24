@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _pickupAudioResource;
 
+    private float _startingHeight;
+
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -75,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         Coins = _startingCoins;
+        _startingHeight = transform.position.y;
     }
     private void Awake()
     {
@@ -149,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _leftClickToInteract.SetActive(false);
         }
+
+        transform.position = new Vector3(transform.position.x, _startingHeight, transform.position.z);
     }
 
     private void HandleFOV(float deltaTime)
