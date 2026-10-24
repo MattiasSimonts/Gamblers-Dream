@@ -605,6 +605,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5148589068790517690, guid: 75dcabaf9a720504196a2626d2277ea4, type: 3}
   m_PrefabInstance: {fileID: 1054729241}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &165610733 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8549370689545120232, guid: 75dcabaf9a720504196a2626d2277ea4, type: 3}
+  m_PrefabInstance: {fileID: 1054729241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &165610735
 AudioSource:
   m_ObjectHideFlags: 0
