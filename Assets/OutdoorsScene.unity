@@ -1325,6 +1325,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1323852306486029152, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
+      propertyPath: _minDistanceFromPlayerToSpawner
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1513385812586500582, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2711,15 +2715,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7430995381798292768, guid: 2b9cd88df0c14bc4ca11e7e34942bf05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.867914
+      value: -4.96
       objectReference: {fileID: 0}
     - target: {fileID: 7430995381798292768, guid: 2b9cd88df0c14bc4ca11e7e34942bf05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000000110891506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7430995381798292768, guid: 2b9cd88df0c14bc4ca11e7e34942bf05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.11
       objectReference: {fileID: 0}
     - target: {fileID: 7430995381798292768, guid: 2b9cd88df0c14bc4ca11e7e34942bf05, type: 3}
       propertyPath: m_LocalRotation.w
