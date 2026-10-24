@@ -315,22 +315,21 @@ MonoBehaviour:
   - {fileID: 5940777976626564922}
   - {fileID: 5407710292596937947}
   - {fileID: 2313239289522396664}
-  _generalWeight: 1
-  _0DegreeCoinsValue: 1
-  _45DegreeCoinsValue: 1
-  _90DegreeCoinsValue: 1
-  _135DegreeCoinsValue: 1
-  _180DegreeCoinsValue: 1
-  _225DegreeCoinsValue: 1
-  _270DegreeCoinsValue: 1
-  _315DegreeCoinsValue: 1
+  _generalWeight: 0.9
+  _0DegreeCoinsValue: -0.1
+  _45DegreeCoinsValue: 0.4
+  _90DegreeCoinsValue: 0.3
+  _135DegreeCoinsValue: 0.6
+  _180DegreeCoinsValue: 0.7
+  _225DegreeCoinsValue: 0.5
+  _270DegreeCoinsValue: 0.8
+  _315DegreeCoinsValue: 0.2
   _slotAudioSource: {fileID: 6574524000091965920}
   _AudioSource: {fileID: 1627389309704954663}
   _slotClickSoundEffect: {fileID: 6418180475301049370, guid: ce0424ac164c38a4aa6495b73d214c1d, type: 2}
   _bellSoundEffect: {fileID: 6418180475301049370, guid: c71f59de09e36cc43a9853598b1adbe9, type: 2}
   _leverSoundEffect: {fileID: 6418180475301049370, guid: 9b04318ca944e4c42b354204de5b66f0, type: 2}
   _winSoundEffect: {fileID: 8300000, guid: 105886b31e3231b4a884ae43043b3889, type: 3}
-  _startEnabled: 0
   _slotmachineText: {fileID: 415432648959645663}
 --- !u!65 &4727727416812254829
 BoxCollider:

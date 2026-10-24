@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1616,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1830245146955699842, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
       propertyPath: m_Name
-      value: ClockSpawnManager
+      value: Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3742,6 +3742,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fbbdb62a7dfaecf4aba50c57ea669c9a, type: 2}
     - target: {fileID: 6088758943090493033, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
       propertyPath: _startEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088758943090493033, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
+      propertyPath: _isTutorialMachine
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7185130640507164772, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
