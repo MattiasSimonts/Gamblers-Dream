@@ -3604,6 +3604,10 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.z
       value: NaN
       objectReference: {fileID: 0}
+    - target: {fileID: 443624863745046661, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fbbdb62a7dfaecf4aba50c57ea669c9a, type: 2}
     - target: {fileID: 1488767953512218792, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
       propertyPath: m_Intensity
       value: 2802.503
