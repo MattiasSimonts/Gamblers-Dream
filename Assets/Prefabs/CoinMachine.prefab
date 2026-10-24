@@ -47,16 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb2528abf5f2044ba509a623e192519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotMachine
-  _barrelsPositions:
+  _barrelsTransforms:
   - {fileID: 325139477049855790}
   - {fileID: 2136859816739451904}
   - {fileID: 3258234197271284615}
   _barrelSpinSpeed: 900
   _barrelSpinTime: 5
   _delayBetweenBarrels: 1
-  _coinSpewPositions:
-  - {fileID: 1131812236489061771}
+  _leverTransform: {fileID: 8767171748418971906}
+  _leverSpeed: 1
+  _coinSpewTransforms:
   - {fileID: 166183468004244569}
+  - {fileID: 1131812236489061771}
   _coinPrefab: {fileID: 8851476262249342423, guid: 9eb095b1e159d6f4f90cf1a9bc26d725, type: 3}
   _coinPower: 3
   _coinSpewAngleSpread: 15
@@ -226,6 +228,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!4 &8767171748418971906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8953001399111801767, guid: c4d02578691a9224488c5bed190e6442, type: 3}
+  m_PrefabInstance: {fileID: 8821369594775588187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9070660410930801328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4d02578691a9224488c5bed190e6442, type: 3}

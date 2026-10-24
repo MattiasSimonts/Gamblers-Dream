@@ -7,15 +7,21 @@ using Random = UnityEngine.Random;
 public class SlotMachine : MonoBehaviour
 {
     [Header("Barrels")]
-    [SerializeField] private Transform[] _barrelsPositions;
+    [SerializeField] private Transform[] _barrelsTransforms;
     [SerializeField] private float _barrelSpinSpeed = 200.0f;
     [SerializeField] private float _barrelSpinTime = 5.0f;
     [SerializeField] private float _delayBetweenBarrels = 1f;
     private int _spinningBarrels = 0;
     private float _barrelSpinTimePast = 0f;
     
+    [Header("Lever")]
+    [SerializeField] private Transform _leverTransform;
+    [SerializeField] private float _leverSpeed = 1f;
+    //[SerializeField] private float 
+    
+    
     [Header("coin spewing")]
-    [SerializeField] private Transform[] _coinSpewPositions;
+    [SerializeField] private Transform[] _coinSpewTransforms;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private float _coinPower  = 10;
     [SerializeField] private float _coinSpewAngleSpread = 5.0f;
@@ -34,7 +40,7 @@ public class SlotMachine : MonoBehaviour
             {
                 _spinningBarrels--;
                 if(_spinningBarrels > 0)
-                    _barrelsPositions[_spinningBarrels].rotation = Quaternion.Euler(0,0,0);
+                    _barrelsTransforms[_spinningBarrels].rotation = Quaternion.Euler(0,0,0);
                 
                 if(_spinningBarrels >= 0)
                     _barrelSpinTimePast -= _delayBetweenBarrels;
@@ -48,7 +54,7 @@ public class SlotMachine : MonoBehaviour
             }
             for (int i = 0; i < _spinningBarrels; i++)
             {
-                _barrelsPositions[i].Rotate(_barrelSpinSpeed*Time.deltaTime,0,0);
+                _barrelsTransforms[i].Rotate(_barrelSpinSpeed*Time.deltaTime,0,0);
             }
         }
         
@@ -72,7 +78,7 @@ public class SlotMachine : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
-            Transform coinSpewPosition = _coinSpewPositions[Random.Range(0, _coinSpewPositions.Length)];
+            Transform coinSpewPosition = _coinSpewTransforms[Random.Range(0, _coinSpewTransforms.Length)];
             Quaternion rotation = Quaternion.Euler(Random.Range(0,180), 0, Random.Range(0,180));
             GameObject coin = Instantiate(_coinPrefab, coinSpewPosition.position, rotation);
             Vector3 angle = coinSpewPosition.rotation * Quaternion.Euler(
@@ -93,7 +99,7 @@ public class SlotMachine : MonoBehaviour
     {
         if(_isSpinning)
             return;
-        _spinningBarrels = _barrelsPositions.Length;
+        _spinningBarrels = _barrelsTransforms.Length;
         _isSpinning = true;
     }
 }
