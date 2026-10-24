@@ -2,8 +2,10 @@ using Assets.Scripts;
 using Assets.Scripts.Player;
 using DG.Tweening;
 using System;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -32,8 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerHP _playerHP;
     [SerializeField] private float _sprintHPUsagePerSecond;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioResource _pickupAudioResource;
 
-    private PlayerCoins _coins;
+    private float _startingHeight;
+
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -47,7 +52,33 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private Vector3 _input;
+    [SerializeField] private TextMeshProUGUI _coinsDisplayText;
+    private int _coins;
 
+    public int Coins
+    {
+        get { return _coins; }
+        set
+        {
+            if (value == _coins)
+                return;
+            _coins = value;
+
+            UpdateCoinVisual();
+        }
+    }
+
+    private void UpdateCoinVisual()
+    {
+        _coinsDisplayText.text = Coins.ToString();
+    }
+
+    [SerializeField] private int _startingCoins;
+    private void Start()
+    {
+        Coins = _startingCoins;
+        _startingHeight = transform.position.y;
+    }
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -68,20 +99,23 @@ public class PlayerMovement : MonoBehaviour
         _interact.performed += Interact;
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        _coins = GetComponent<PlayerCoins>();
     }
 
     private void Interact(InputAction.CallbackContext obj)
     {
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
+            IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
+            if (hoveringInteractable.CanInteract)
+                hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
         }
     }
     public void AddCoins(int amount)
     {
-        _coins.Coins += amount;
+        Coins += amount;
+
+        _audioSource.resource = _pickupAudioResource;
+        _audioSource.Play();
     }
     private void SprintCanceled(InputAction.CallbackContext obj)
     {
@@ -109,8 +143,17 @@ public class PlayerMovement : MonoBehaviour
 
         HandleFOV(Time.deltaTime);
 
-        _leftClickToInteract.SetActive(Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, _interactionRange, _interactionLayer));
+        if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
+        {
+            IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
+            _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
+        }
+        else
+        {
+            _leftClickToInteract.SetActive(false);
+        }
 
+        transform.position = new Vector3(transform.position.x, _startingHeight, transform.position.z);
     }
 
     private void HandleFOV(float deltaTime)
