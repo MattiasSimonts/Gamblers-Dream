@@ -12,12 +12,22 @@ using Random = UnityEngine.Random;
 
 public class SlotMachine : MonoBehaviour
 {
+    [SerializeField] private bool _isTutorialMachine;
+
+    public bool isTutorialMachine
+    {
+        get
+        {
+            return _isTutorialMachine;
+        }
+    }
     [SerializeField] private bool _spinAutomaticly = true;
 
     [Header("Barrels")] [SerializeField] private Transform[] _barrelsTransforms;
     [SerializeField] private float _barrelSpinSpeed = 200.0f;
     [SerializeField] private float _barrelSpinTime = 5.0f;
     [SerializeField] private float _delayBetweenBarrels = 1f;
+
     private int _spinningBarrels = 0;
     private float _barrelSpinTimePast = 0f;
     private bool _isSpinning = false;
