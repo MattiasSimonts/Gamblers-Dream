@@ -19,7 +19,7 @@ AudioRandomContainer:
   m_Name: LeverSoundEffect
   m_Volume: -7.5
   m_Pitch: 0
-  m_AutomaticTriggerTime: 0
+  m_AutomaticTriggerTime: 0.01
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: -2.6998281, y: 4.831257}
   m_PitchRandomizationRange: {x: -42.62874, y: 31.971647}
@@ -30,8 +30,8 @@ AudioRandomContainer:
   m_AvoidRepeatingLast: 0
   m_PlaybackMode: 0
   m_TriggerMode: 1
-  m_AutomaticTriggerMode: 1
-  m_LoopMode: 2
+  m_AutomaticTriggerMode: 0
+  m_LoopMode: 0
   m_VolumeRandomizationEnabled: 1
   m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 0

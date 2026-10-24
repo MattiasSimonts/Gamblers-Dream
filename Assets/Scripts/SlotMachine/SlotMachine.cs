@@ -35,6 +35,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private float _coinSpewAngleSpread = 5.0f;
     [SerializeField] private float _coinInterval = 0.02f;
     [SerializeField] private float _coinSpinSpeed = 1f;
+    [SerializeField] private List<GameObject> _enabledIndicatorGameobject = new List<GameObject>();
 
     [Header("Weights")] [SerializeField] private float _generalWeight = 2f;
     [SerializeField] private float _0DegreeCoinsValue = 1f;
@@ -57,9 +58,34 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioResource _leverSoundEffect;
     [SerializeField] private AudioResource _winSoundEffect;
 
+    [SerializeField] private bool _startEnabled;
+
     private Tween _moveAnimation;
 
     private Dictionary<string, (float, float)> _rotationMap;
+
+    private bool _isEnabled = true;
+
+    public bool IsEnabled
+    {
+        get { 
+            return _isEnabled;
+        }
+        set {
+            if (value == _isEnabled)
+                return;
+            _isEnabled = value;
+            UpdateEnabledVisual();
+        }
+    }
+
+    private void UpdateEnabledVisual()
+    {
+        foreach (GameObject gameObject in _enabledIndicatorGameobject)
+        {
+            gameObject.SetActive(IsEnabled);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -138,6 +164,7 @@ public class SlotMachine : MonoBehaviour
             _results[i] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
             _barrelsTransforms[i].localRotation = Quaternion.Euler(_rotationMap[_results[i]].Item1, 0, 0);
         }
+        IsEnabled = _startEnabled;
     }
 
     private IEnumerator SpewCoins(int amount)
@@ -185,7 +212,7 @@ public class SlotMachine : MonoBehaviour
 
     public void Spin()
     {
-        if (_isSpinning)
+        if (_isSpinning || !_isEnabled)
             return;
         StartCoroutine(SpinHandle());
         PlaySound(_leverSoundEffect);
