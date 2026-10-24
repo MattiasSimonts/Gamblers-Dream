@@ -1616,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1830245146955699842, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
       propertyPath: m_Name
-      value: ClockSpawnManager
+      value: Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

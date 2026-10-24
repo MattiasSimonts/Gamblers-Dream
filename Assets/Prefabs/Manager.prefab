@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1513385812586500582}
   - component: {fileID: 1323852306486029152}
+  - component: {fileID: 545684113740747396}
   m_Layer: 0
-  m_Name: ClockSpawnManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,3 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClockManager
   _clockSpawnerTag: ClockSpawner
   _minDistanceFromPlayerToSpawner: 1
+  _spawnInterval: 15
+--- !u!114 &545684113740747396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830245146955699842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d4f629eef36814695f3517153abb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlotMachineManager
+  _slotMachineTag: SlotMachine
+  _minDistance: 10
