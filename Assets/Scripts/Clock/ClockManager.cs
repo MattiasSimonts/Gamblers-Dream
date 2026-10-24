@@ -26,7 +26,6 @@ public class ClockManager : MonoBehaviour
             if (spawnerObject.TryGetComponent(out ClockSpawner spawner))
                 _clockSpawners.Add(spawner);
         }
-        print(_clockSpawners.Count);
     }
 
     void SpawnClock()
