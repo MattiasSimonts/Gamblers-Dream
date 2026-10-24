@@ -253,7 +253,7 @@ public class SlotMachine : MonoBehaviour
 
             _results[Random.Range(0, _barrelsTransforms.Length)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
         }
-
+        if(_amountOfCoins == 0) _amountOfCoins = 1; 
         _baseAmountOfCoins = 0;
     }
 
