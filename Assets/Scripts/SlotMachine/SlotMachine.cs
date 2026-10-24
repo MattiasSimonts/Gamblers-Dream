@@ -155,6 +155,7 @@ public class SlotMachine : MonoBehaviour
 
     private void Awake()
     {
+        UpdateEnabledVisual();
     }
 
     private void Start()
