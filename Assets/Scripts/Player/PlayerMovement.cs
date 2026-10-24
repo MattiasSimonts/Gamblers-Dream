@@ -4,6 +4,7 @@ using DG.Tweening;
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -28,8 +29,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _interactionRange;
     [SerializeField] private LayerMask _interactionLayer;
 
+    [SerializeField] private float _gravity;
+
     [SerializeField] private PlayerHP _playerHP;
     [SerializeField] private float _sprintHPUsagePerSecond;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioResource _pickupAudioResource;
+
+    private PlayerCoins _coins;
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -64,16 +71,24 @@ public class PlayerMovement : MonoBehaviour
         _interact.performed += Interact;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        _coins = GetComponent<PlayerCoins>();
     }
 
     private void Interact(InputAction.CallbackContext obj)
     {
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            hitInfo.collider.GetComponent<IInteractable>().OnInteract();
+            hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
         }
     }
+    public void AddCoins(int amount)
+    {
+        _coins.Coins += amount;
 
+        _audioSource.resource = _pickupAudioResource;
+        _audioSource.Play();
+    }
     private void SprintCanceled(InputAction.CallbackContext obj)
     {
         _isSprinting = false;
@@ -134,6 +149,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (!_characterController.isGrounded)
+        {
+            _movementVelocity += Vector3.down * _gravity;
+        }
 
         _characterController.Move(_movementVelocity);
     }
