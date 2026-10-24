@@ -185,7 +185,7 @@ public class SlotMachine : MonoBehaviour
             _amountOfCoins *= (_rotationMap[randomResult].Item2 + _generalWeight);
 
 
-            _results[Random.Range(0, _barrelsTransforms.Length - 1)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
+            _results[Random.Range(0, _barrelsTransforms.Length)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
         }
 
         _baseAmountOfCoins = 0;
