@@ -70,7 +70,7 @@ public class SlotMachine : MonoBehaviour
 
     private Dictionary<string, (float, float)> _rotationMap;
 
-    private bool _isEnabled = false;
+    private bool _isEnabled = true;
 
     public bool IsEnabled
     {
@@ -89,7 +89,6 @@ public class SlotMachine : MonoBehaviour
     {
         foreach (GameObject gameObject in _enabledIndicatorGameobject)
         {
-            print("inslotmachinece");
             gameObject.SetActive(IsEnabled);
         }
     }
@@ -156,6 +155,7 @@ public class SlotMachine : MonoBehaviour
 
     private void Awake()
     {
+        UpdateEnabledVisual();
     }
 
     private void Start()

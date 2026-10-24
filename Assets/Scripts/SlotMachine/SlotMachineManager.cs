@@ -24,17 +24,17 @@ public class SlotMachineManager : MonoBehaviour
         var slotMachineObjects = GameObject.FindGameObjectsWithTag(_slotMachineTag);
         foreach (var slotMachineObject in slotMachineObjects)
             if(slotMachineObject.TryGetComponent(out SlotMachine slotMachine))
-                if(slotMachine.isTutorialMachine)
+                if(!slotMachine.isTutorialMachine)
                     _slotMachines.Add(slotMachine);
     }
 
     public void SwitchMachine()
     {
-        
+        Transform active = GetActiveSlotMachineTransform();
         List<SlotMachine> availableSpawns = _slotMachines.Where(slotMachine =>
-            Vector3.Distance(_player.position, slotMachine.transform.position) > _minDistance && 
-            Vector3.Distance(GetActiveSlotMachineTransform().position, slotMachine.transform.position) < _minDistance  &&
-            slotMachine.IsEnabled ).ToList() ?? new List<SlotMachine>();
+            !slotMachine.IsEnabled &&
+            Vector3.Distance(_player.position, slotMachine.transform.position) > _minDistance &&
+            Vector3.Distance(active.position, slotMachine.transform.position)  > _minDistance).ToList() ?? new List<SlotMachine>();
         
         if(availableSpawns.Count == 0) return;
         print("test");
