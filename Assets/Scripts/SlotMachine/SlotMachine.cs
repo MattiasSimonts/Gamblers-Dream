@@ -250,6 +250,8 @@ public class SlotMachine : MonoBehaviour
 
     public void InsertCoin()
     {
+        if (!IsEnabled)
+            return;
         _baseAmountOfCoins++;
         _slotmachineText.text = _baseAmountOfCoins.ToString();
     }
