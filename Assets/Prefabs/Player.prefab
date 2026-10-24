@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3476865759740301224}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,10 +44,10 @@ GameObject:
   - component: {fileID: 2874774698113798402}
   - component: {fileID: 3528013631807705129}
   - component: {fileID: 8712565701476708428}
-  - component: {fileID: 2483515261185002810}
-  m_Layer: 0
+  - component: {fileID: 8704235426664219168}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,10 +82,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _playerCamera: {fileID: 2540005465809184176}
   _playerInputs: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
-  _moveSpeed: 0.08
+  _moveSpeed: 0.04
   _accelartionSpeed: 0.5
   _deccelartionSpeed: 0.35
-  _sprintSpeed: 0.15
+  _sprintSpeed: 0.08
   _sprintAccelartionSpeed: 0.7
   _lookSens: 4
   _cameraHolder: {fileID: 3476865759740301224}
@@ -98,10 +98,15 @@ MonoBehaviour:
   _interactionLayer:
     serializedVersion: 2
     m_Bits: 320
+  _gravity: 0
   _playerHP: {fileID: 8712565701476708428}
   _sprintHPUsagePerSecond: 1
+  _audioSource: {fileID: 8704235426664219168}
+  _pickupAudioResource: {fileID: 6418180475301049370, guid: 6495ff64845c0644d8dac3a718d954f2, type: 2}
   _movementVelocity: {x: 0, y: 0, z: 0}
   _input: {x: 0, y: 0, z: 0}
+  _coinsDisplayText: {fileID: 0}
+  _startingCoins: 5
 --- !u!143 &3528013631807705129
 CharacterController:
   m_ObjectHideFlags: 0
@@ -115,14 +120,14 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -141,20 +146,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.PlayerHP
   _healthBar: {fileID: 0}
   _maxHealth: 100
---- !u!114 &2483515261185002810
-MonoBehaviour:
+--- !u!82 &8704235426664219168
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5148589068790517690}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9cd60358bb774a4bbbe87ebb204d5dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.PlayerCoins
-  _coinsDisplayText: {fileID: 0}
-  _startingCoins: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7752648439224058534
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363007362422568259}
   - component: {fileID: 2540005465809184176}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

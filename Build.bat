@@ -11,6 +11,7 @@ set PROJECT=%~dp0.
 
 if %ERRORLEVEL% neq 0 (
   echo Build FAILED - see build.log
+  pause
   exit /b %ERRORLEVEL%
 )
 echo Build succeeded.
