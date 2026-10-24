@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 6574524000091965920}
   m_Layer: 0
   m_Name: CoinMachine
-  m_TagString: Untagged
+  m_TagString: SlotMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb2528abf5f2044ba509a623e192519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlotMachine
+  _isTutorialMachine: 0
   _spinAutomaticly: 0
   _barrelsTransforms:
   - {fileID: 491694485396998936}

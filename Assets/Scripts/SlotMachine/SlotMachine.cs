@@ -12,12 +12,15 @@ using Random = UnityEngine.Random;
 
 public class SlotMachine : MonoBehaviour
 {
+    [SerializeField] private bool _isTutorialMachine;
+    public bool isTutorialMachine => _isTutorialMachine;
     [SerializeField] private bool _spinAutomaticly = true;
 
     [Header("Barrels")] [SerializeField] private Transform[] _barrelsTransforms;
     [SerializeField] private float _barrelSpinSpeed = 200.0f;
     [SerializeField] private float _barrelSpinTime = 5.0f;
     [SerializeField] private float _delayBetweenBarrels = 1f;
+
     private int _spinningBarrels = 0;
     private float _barrelSpinTimePast = 0f;
     private bool _isSpinning = false;
@@ -59,14 +62,15 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioResource _leverSoundEffect;
     [SerializeField] private AudioResource _winSoundEffect;
 
-    [SerializeField] private bool _startEnabled;
     [SerializeField] private TextMeshProUGUI _slotmachineText;
 
+
+    public static SlotMachineManager Manager { get; set; }
     private Tween _moveAnimation;
 
     private Dictionary<string, (float, float)> _rotationMap;
 
-    private bool _isEnabled = true;
+    private bool _isEnabled = false;
 
     public bool IsEnabled
     {
@@ -85,6 +89,7 @@ public class SlotMachine : MonoBehaviour
     {
         foreach (GameObject gameObject in _enabledIndicatorGameobject)
         {
+            print("inslotmachinece");
             gameObject.SetActive(IsEnabled);
         }
     }
@@ -116,6 +121,10 @@ public class SlotMachine : MonoBehaviour
                     _slotAudioSource.Stop();
                     PlaySound(_winSoundEffect);
                     _slotmachineText.text = "You win!";
+                    IsEnabled = false;
+                    Manager.SwitchMachine();
+                    if(_isTutorialMachine)
+                        Manager.SwitchMachine();
                 }
             }
 
@@ -167,7 +176,7 @@ public class SlotMachine : MonoBehaviour
             _results[i] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
             _barrelsTransforms[i].localRotation = Quaternion.Euler(_rotationMap[_results[i]].Item1, 0, 0);
         }
-        IsEnabled = _startEnabled;
+        IsEnabled = _isTutorialMachine;
     }
 
     private IEnumerator SpewCoins(int amount)
