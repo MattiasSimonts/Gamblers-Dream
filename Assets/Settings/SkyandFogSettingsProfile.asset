@@ -100,10 +100,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   multiplier:
     m_OverrideState: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 20000
   updateMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   updatePeriod:
     m_OverrideState: 0
@@ -137,13 +137,13 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 0, y: -6378100, z: 0}
   type:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   atmosphericScattering:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   renderingMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   material:
     m_OverrideState: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.28930807, g: 0.144654, b: 0.19279142, a: 1}
+    m_Value: {r: 0.076560445, g: 0.045310672, b: 0.18238991, a: 1}
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -314,10 +314,10 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 12
+    m_Value: 7.57
   enableVolumetricFog:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   albedo:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Version: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 4
   cloudType:
     m_OverrideState: 0
     m_Value: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     m_Value: -0.8
   contrast:
     m_OverrideState: 1
-    m_Value: -56
+    m_Value: -55
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -587,7 +587,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 77
+    m_Value: 84
 --- !u!114 &1494403961608399111
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -786,7 +786,7 @@ MonoBehaviour:
     m_Value: 65535
   reflectionLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 1
   reflectionLightingLayers:
     m_OverrideState: 0
     m_Value: 65535
@@ -816,8 +816,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   fixedExposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1.5174419
   compensation:
     m_OverrideState: 0
     m_Value: 0

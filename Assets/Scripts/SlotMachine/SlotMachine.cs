@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Serialization;
@@ -59,6 +60,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioResource _winSoundEffect;
 
     [SerializeField] private bool _startEnabled;
+    [SerializeField] private TextMeshProUGUI _slotmachineText;
 
     private Tween _moveAnimation;
 
@@ -113,6 +115,7 @@ public class SlotMachine : MonoBehaviour
                     StartCoroutine(SpewCoins(Mathf.RoundToInt(_amountOfCoins)));
                     _slotAudioSource.Stop();
                     PlaySound(_winSoundEffect);
+                    _slotmachineText.text = "You win!";
                 }
             }
 
@@ -239,7 +242,7 @@ public class SlotMachine : MonoBehaviour
             _amountOfCoins *= (_rotationMap[randomResult].Item2 + _generalWeight);
 
 
-            _results[Random.Range(0, _barrelsTransforms.Length - 1)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
+            _results[Random.Range(0, _barrelsTransforms.Length)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
         }
 
         _baseAmountOfCoins = 0;
@@ -247,7 +250,10 @@ public class SlotMachine : MonoBehaviour
 
     public void InsertCoin()
     {
+        if (!IsEnabled)
+            return;
         _baseAmountOfCoins++;
+        _slotmachineText.text = _baseAmountOfCoins.ToString();
     }
 
     public bool HasCoins => _baseAmountOfCoins > 0;

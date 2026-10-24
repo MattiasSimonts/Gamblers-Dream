@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
@@ -45,6 +46,7 @@ namespace Assets.Scripts.Player
         private void WakeUp()
         {
 			Debug.Log("You woke up");
+			SceneManager.LoadScene(0);
         }
 
         [SerializeField] private int _maxHealth;
