@@ -54,6 +54,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioSource _AudioSource;
     [SerializeField] private AudioResource _slotClickSoundEffect;
     [SerializeField] private AudioResource _bellSoundEffect;
+    [SerializeField] private AudioResource _leverSoundEffect;
     [SerializeField] private AudioResource _winSoundEffect;
 
     private Tween _moveAnimation;
@@ -187,6 +188,7 @@ public class SlotMachine : MonoBehaviour
         if (_isSpinning)
             return;
         StartCoroutine(SpinHandle());
+        PlaySound(_leverSoundEffect);
         
     }
 

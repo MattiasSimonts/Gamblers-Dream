@@ -59,7 +59,7 @@ MonoBehaviour:
   _barrelSpinTime: 5
   _delayBetweenBarrels: 1
   _leverTransform: {fileID: 8767171748418971906}
-  _leverSpeed: 1
+  _leverSpeed: 0.4
   _leverRotation: 60
   _coinSpewTransforms:
   - {fileID: 166183468004244569}
@@ -82,6 +82,7 @@ MonoBehaviour:
   _AudioSource: {fileID: 1627389309704954663}
   _slotClickSoundEffect: {fileID: 6418180475301049370, guid: ce0424ac164c38a4aa6495b73d214c1d, type: 2}
   _bellSoundEffect: {fileID: 6418180475301049370, guid: c71f59de09e36cc43a9853598b1adbe9, type: 2}
+  _leverSoundEffect: {fileID: 6418180475301049370, guid: 9b04318ca944e4c42b354204de5b66f0, type: 2}
   _winSoundEffect: {fileID: 8300000, guid: 105886b31e3231b4a884ae43043b3889, type: 3}
 --- !u!65 &4727727416812254829
 BoxCollider:
