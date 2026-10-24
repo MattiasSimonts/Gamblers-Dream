@@ -56,6 +56,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioResource _bellSoundEffect;
     [SerializeField] private AudioResource _winSoundEffect;
 
+    private Tween _moveAnimation;
 
     private Dictionary<string, (float, float)> _rotationMap;
 
@@ -70,6 +71,8 @@ public class SlotMachine : MonoBehaviour
                 _spinningBarrels--;
                 if (_spinningBarrels >= 0)
                 {
+                    _moveAnimation.Kill();
+                    transform.localScale = Vector3.one;
                     _barrelsTransforms[_spinningBarrels].localRotation = Quaternion.Euler(_rotationMap[_results[_spinningBarrels]].Item1, 0, 0);
                     _barrelSpinTimePast -= _delayBetweenBarrels;
                     PlaySound(_bellSoundEffect);
@@ -172,6 +175,8 @@ public class SlotMachine : MonoBehaviour
         _isSpinning = true;
 
         _slotAudioSource.Play();
+
+        _moveAnimation = transform.DOShakeScale(1000f, 0.02f, 10, 30, false, ShakeRandomnessMode.Harmonic);
 
         GetSpinResults();
     }
