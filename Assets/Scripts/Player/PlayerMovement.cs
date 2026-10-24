@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Player;
 using DG.Tweening;
 using System;
 using Unity.Cinemachine;
@@ -26,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _fovChangeSpeed;
     [SerializeField] private float _interactionRange;
     [SerializeField] private LayerMask _interactionLayer;
+
+    [SerializeField] private PlayerHP _playerHP;
+    [SerializeField] private float _sprintHPUsagePerSecond;
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -120,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 _movementVelocity += _sprintAccelartionSpeed * deltaTime * input;
                 _movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _sprintSpeed);
+
+                _playerHP.Health -= _sprintHPUsagePerSecond * Time.deltaTime;
             }
             else
             {
