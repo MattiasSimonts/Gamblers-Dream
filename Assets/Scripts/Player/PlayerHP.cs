@@ -24,7 +24,7 @@ namespace Assets.Scripts.Player
 
 				UpdateHealthBar();
 
-                if (_health < 0)
+                if (_health <= 0)
 					WakeUp();
             }
 		}
