@@ -21,5 +21,15 @@ public class InsertCoin : MonoBehaviour, IInteractable
         }
     }
 
-    public bool CanInteract => !(_slotMachine.IsSpinning || _slotMachine.IsEnabled);
+    public bool CanInteract => CanInteractBooleanMaker();
+
+    private bool CanInteractBooleanMaker()
+    {
+        if (_slotMachine.IsSpinning)
+            return false;
+        if (!_slotMachine.IsEnabled)
+            return false;
+
+        return true;
+    }
 }
