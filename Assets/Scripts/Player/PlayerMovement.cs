@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerHP _playerHP;
     [SerializeField] private float _sprintHPUsagePerSecond;
 
+    private PlayerCoins _coins;
+
     private float _currentYAngle;
     private CharacterController _characterController;
     private bool _isSprinting;
@@ -64,16 +66,21 @@ public class PlayerMovement : MonoBehaviour
         _interact.performed += Interact;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        _coins = GetComponent<PlayerCoins>();
     }
 
     private void Interact(InputAction.CallbackContext obj)
     {
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            hitInfo.collider.GetComponent<IInteractable>().OnInteract();
+            hitInfo.collider.GetComponent<IInteractable>().OnInteract(this);
         }
     }
-
+    public void AddCoins(int amount)
+    {
+        _coins.Coins += amount;
+    }
     private void SprintCanceled(InputAction.CallbackContext obj)
     {
         _isSprinting = false;

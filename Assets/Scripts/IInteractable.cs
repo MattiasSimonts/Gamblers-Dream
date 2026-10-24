@@ -5,6 +5,6 @@ namespace Assets.Scripts
 {
     public interface IInteractable
     {
-        public void OnInteract();
+        public void OnInteract(PlayerMovement playerMovement);
     }
 }
