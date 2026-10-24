@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6632842744049577243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf4697996d7043f48a4a43f66406f521, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b0e37c2433fc3b44917753518fc28f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClockScript
   _player: {fileID: 0}
