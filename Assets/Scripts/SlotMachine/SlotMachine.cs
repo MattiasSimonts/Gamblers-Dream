@@ -216,7 +216,6 @@ public class SlotMachine : MonoBehaviour
             return;
         StartCoroutine(SpinHandle());
         PlaySound(_leverSoundEffect);
-        
     }
 
     private void GetSpinResults()
