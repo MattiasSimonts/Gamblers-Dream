@@ -1,3 +1,4 @@
+using EasyTransition;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,6 @@ public class PlayerUi : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        _healthBar.SetActive(scene.buildIndex == 0);
+        _healthBar.SetActive(scene.name == "OutdoorsScene");
     }
 }

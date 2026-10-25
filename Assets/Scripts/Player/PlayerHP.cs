@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player
             get => _health;
             set
             {
-                if (SceneManager.GetActiveScene().buildIndex != 0) return;
+                if (SceneManager.GetActiveScene().name != "OutdoorsScene") return;
                 if (_health == value)
                     return;
                 _health = value;

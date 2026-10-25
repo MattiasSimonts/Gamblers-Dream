@@ -47,8 +47,6 @@ public class InteractableCoin : MonoBehaviour, IInteractable
 
     private List<InteractableCoin> GetTouchingCoins()
     {
-        foreach (var coin in _allCoins)
-            Debug.Log($"{coin.name}: dist {Vector3.Distance(coin.transform.position, transform.position)}, radius {_pickUpRadius}", coin);
         return _allCoins.Where(coin => Vector3.Distance(coin.transform.position, transform.position) <= _pickUpRadius).ToList();
     }
 
