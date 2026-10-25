@@ -8,7 +8,7 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseHealth(float amount)
     {
-        _playerHP
+        
     }
     
 }
