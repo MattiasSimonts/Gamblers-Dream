@@ -317,14 +317,14 @@ MonoBehaviour:
   - {fileID: 5940777976626564922}
   - {fileID: 5407710292596937947}
   - {fileID: 2313239289522396664}
-  _generalWeight: 1
+  _generalWeight: 1.1
   _0DegreeCoinsValue: -0.1
-  _45DegreeCoinsValue: 0.1
-  _90DegreeCoinsValue: 0.15
-  _135DegreeCoinsValue: 0.25
-  _180DegreeCoinsValue: 0.3
-  _225DegreeCoinsValue: 0.2
-  _270DegreeCoinsValue: 0.5
+  _45DegreeCoinsValue: 0.15
+  _90DegreeCoinsValue: 0.2
+  _135DegreeCoinsValue: 0.3
+  _180DegreeCoinsValue: 0.35
+  _225DegreeCoinsValue: 0.25
+  _270DegreeCoinsValue: 0.1
   _315DegreeCoinsValue: 0
   _slotAudioSource: {fileID: 6574524000091965920}
   _AudioSource: {fileID: 1627389309704954663}
