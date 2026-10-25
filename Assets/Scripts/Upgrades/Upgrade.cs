@@ -7,7 +7,6 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
 {
     [SerializeField] private PriceBoard _priceBoard;
     [SerializeField] protected int _price;
-    protected int _amountOfPurchases = 0;
     private bool HasPurchast = false;
     protected PlayerMovement _playerMovement;
 
@@ -17,7 +16,6 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
         DoUpgrade(playerMovement);
         playerMovement.ShopCoins -= _price;
         HasPurchast = true;
-        _amountOfPurchases++;
 
 
     }
