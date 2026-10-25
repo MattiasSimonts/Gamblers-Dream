@@ -15,6 +15,6 @@ public class SleepingPils : Upgrade
 
     protected override string GetSecondName()
     {
-        return $"Currently you have {_playerMovement.CoinPickupUpgrades} magnet upgrades";
+        return $"Currently you have {_amountOfPurchases} health upgrades";
     }
 }
