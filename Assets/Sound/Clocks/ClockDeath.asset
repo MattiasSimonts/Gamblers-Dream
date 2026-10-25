@@ -1,23 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1233149941 &5305762824141418668
+--- !u!1233149941 &280960452451691442
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClockDeath3_{5305762824141418668}
-  m_AudioClip: {fileID: 8300000, guid: 233591bb237076147a2375109b6583fb, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
---- !u!1233149941 &6388481650126259356
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ClockDeath1_{6388481650126259356}
-  m_AudioClip: {fileID: 8300000, guid: ca079264df2c79e49a331daa3ab0e521, type: 3}
+  m_Name: ClockDeath_{280960452451691442}
+  m_AudioClip: {fileID: 8300000, guid: 2b2be2d1f389f6549b686a3a370928bc, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -28,33 +18,21 @@ AudioRandomContainer:
   m_PrefabAsset: {fileID: 0}
   m_Name: ClockDeath
   m_Volume: 0
-  m_Pitch: 300
+  m_Pitch: 0
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 200}
+  m_PitchRandomizationRange: {x: -324, y: 384.00006}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
-  - {fileID: 6388481650126259356}
-  - {fileID: 8206837860190769829}
-  - {fileID: 5305762824141418668}
+  - {fileID: 280960452451691442}
   m_AvoidRepeatingLast: 0
-  m_PlaybackMode: 2
-  m_TriggerMode: 0
+  m_PlaybackMode: 0
+  m_TriggerMode: 1
   m_AutomaticTriggerMode: 1
   m_LoopMode: 2
   m_VolumeRandomizationEnabled: 0
   m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 0
   m_LoopCountRandomizationEnabled: 0
---- !u!1233149941 &8206837860190769829
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ClockDeath2_{8206837860190769829}
-  m_AudioClip: {fileID: 8300000, guid: 6057f7f34f222794d973ef11dee7a0f3, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
