@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8082200176492438345
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EvilLaugh1_{-8082200176492438345}
+  m_AudioClip: {fileID: 8300000, guid: 09046c8e9aea5c346b2be8ed563900de, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-6763898125189104534
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EvilLaugh3_{-6763898125189104534}
+  m_AudioClip: {fileID: 8300000, guid: d4442c110aa166a44b159b88808ad21c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
 --- !u!1233149941 &-4657400019341648579
 AudioContainerElement:
   m_ObjectHideFlags: 1
@@ -8,6 +28,16 @@ AudioContainerElement:
   m_PrefabAsset: {fileID: 0}
   m_Name: EvilLaugh3_{-4657400019341648579}
   m_AudioClip: {fileID: 8300000, guid: d4442c110aa166a44b159b88808ad21c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2041829309792998268
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ringring_{-2041829309792998268}
+  m_AudioClip: {fileID: 8300000, guid: e2718d5a786c0ff4eafd29313f5f75d2, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1233149941 &1425830267653587028
@@ -33,12 +63,16 @@ AudioRandomContainer:
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
   m_PitchRandomizationRange: {x: -347.83734, y: 190.16266}
-  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 10}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 39.13044}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
   - {fileID: 1425830267653587028}
   - {fileID: 8364678135090730004}
   - {fileID: -4657400019341648579}
+  - {fileID: -2041829309792998268}
+  - {fileID: -8082200176492438345}
+  - {fileID: 8501800627813844583}
+  - {fileID: -6763898125189104534}
   m_AvoidRepeatingLast: 1
   m_PlaybackMode: 2
   m_TriggerMode: 1
@@ -55,6 +89,16 @@ AudioContainerElement:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EvilLaugh2_{8364678135090730004}
+  m_AudioClip: {fileID: 8300000, guid: dffa9daa196ca094db67bcbaa0bdd9f4, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &8501800627813844583
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EvilLaugh2_{8501800627813844583}
   m_AudioClip: {fileID: 8300000, guid: dffa9daa196ca094db67bcbaa0bdd9f4, type: 3}
   m_Volume: 0
   m_Enabled: 1
