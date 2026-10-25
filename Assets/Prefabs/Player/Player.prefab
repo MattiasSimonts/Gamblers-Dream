@@ -458,7 +458,7 @@ MonoBehaviour:
   _moveSpeed: 0.04
   _accelartionSpeed: 0.5
   _deccelartionSpeed: 0.35
-  _sprintSpeed: 0.08
+  SprintSpeed: 0.08
   _sprintAccelartionSpeed: 0.7
   _lookSens: 4
   _cameraHolder: {fileID: 3476865759740301224}
@@ -525,6 +525,7 @@ MonoBehaviour:
   _audioDamageSource: {fileID: 3341285005947421103}
   _audioDamageResource: {fileID: 6418180475301049370, guid: 480e405ca2b9ee049afe930e8b560916, type: 2}
   _dmgOverTime: 0.5
+  _playerMovement: {fileID: 0}
 --- !u!82 &8704235426664219168
 AudioSource:
   m_ObjectHideFlags: 0
