@@ -82,6 +82,8 @@ public class ClockScript : MonoBehaviour
 
         _clockRB.AddForce(jumpForce, ForceMode.Impulse);
 
+        _clockRB.AddTorque(transform.right * 10f);
+
         _hasJumped = true;
 
         yield return null;
