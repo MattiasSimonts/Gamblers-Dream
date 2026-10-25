@@ -124,8 +124,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         var spawn = GameObject.FindWithTag("PlayerSpawn");
+        print(spawn);
         if (spawn is not null)
-            transform.SetPositionAndRotation(spawn.transform.position, spawn.transform.rotation);
+        {
+            _characterController.enabled = false;
+            gameObject.transform.position = spawn.transform.position;
+            gameObject.transform.rotation = spawn.transform.rotation;
+            _characterController.enabled = true;
+            print("test");
+        }
 
     }
     
