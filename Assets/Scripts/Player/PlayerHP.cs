@@ -24,6 +24,7 @@ namespace Assets.Scripts.Player
             get => _health;
             set
             {
+                if (SceneManager.GetActiveScene().buildIndex != 0) return;
                 if (_health == value)
                     return;
                 _health = value;
@@ -72,13 +73,27 @@ namespace Assets.Scripts.Player
         private void WakeUp()
         {
             Debug.Log("You woke up");
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
 
         private void Start()
         {
             _health = _maxHealth;
+        }
+
+        private static PlayerHP Instance { get; set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject); // a player already exists, remove this duplicate
+                return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 }
