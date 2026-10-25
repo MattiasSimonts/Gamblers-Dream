@@ -81,8 +81,10 @@ MonoBehaviour:
   _jumpDistance: 4
   _jumpHorizontalPower: 6
   _jumpVerticalPower: 5
-  _jumpWindUpTime: 1
+  _jumpWindUpTime: 0.5
   _clockRB: {fileID: 304812874248767349}
+  _deathParticleSystem: {fileID: 0}
+  _clockAnimator: {fileID: 2017906970848583457}
 --- !u!65 &6345332620870316781
 BoxCollider:
   m_ObjectHideFlags: 0
