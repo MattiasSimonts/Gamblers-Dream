@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _accelartionSpeed;
     [SerializeField] private float _deccelartionSpeed;
-    [SerializeField] private float _sprintSpeed;
+    public float SprintSpeed;
     [SerializeField] private float _sprintAccelartionSpeed;
     [SerializeField] private float _lookSens;
     [SerializeField] private Transform _cameraHolder;
@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
             if (_isSprinting)
             {
                 _movementVelocity += _sprintAccelartionSpeed * deltaTime * input;
-                _movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _sprintSpeed);
+                _movementVelocity = Vector3.ClampMagnitude(_movementVelocity, SprintSpeed);
 
                 _playerHP.Health -= _sprintHPUsagePerSecond * Time.deltaTime;
             }
