@@ -53,8 +53,6 @@ public class ClockScript : MonoBehaviour
 
             if (_agent.pathPending) return;
 
-            Debug.Log(_agent.remainingDistance);
-
             if (_agent.remainingDistance <= _jumpDistance && _jumpCoroutine == null)
             {
                 _jumpCoroutine = StartCoroutine(StartJump());
