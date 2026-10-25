@@ -29,6 +29,9 @@ namespace Assets.Scripts.Player
         }
         
 
+        [SerializeField] private PlayerMovement _playerMovement;
+        
+
         public float Health
         {
             get => _health;
@@ -84,6 +87,9 @@ namespace Assets.Scripts.Player
         {
             Debug.Log("You woke up");
 
+            _playerMovement.InShop = true;
+
+
             TransitionManager.Instance().Transition("NonDreamScene", _transition, 0);
         }
 
@@ -91,6 +97,7 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _health = _maxHealth;
+            _playerMovement = GetComponent<PlayerMovement>();
         }
         private void Update()
         {
