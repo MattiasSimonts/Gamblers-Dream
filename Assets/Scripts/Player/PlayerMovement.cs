@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _sprintHPUsagePerSecond;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _pickupAudioResource;
+    [SerializeField] private CinemachineImpulseListener _impulselistener;
 
     public PlayerHP GetPlayerHp => _playerHP;
 

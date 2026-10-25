@@ -2,6 +2,7 @@
 using EasyTransition;
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -18,6 +19,8 @@ namespace Assets.Scripts.Player
 
         [SerializeField] private AudioSource _audioDamageSource;
         [SerializeField] private AudioResource _audioDamageResource;
+
+        [SerializeField] private CinemachineImpulseSource _impulsesource;
         public event EventHandler OnHealthChanged;
         private float _health;
         [SerializeField] private float _dmgOverTime;
@@ -76,6 +79,8 @@ namespace Assets.Scripts.Player
         {
             _audioDamageSource.resource = _audioDamageResource;
             _audioDamageSource.Play();
+
+            _impulsesource.GenerateImpulse();
         }
 
         private void DeleteTween()
