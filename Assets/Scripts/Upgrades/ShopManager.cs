@@ -26,7 +26,7 @@ public class ShopManager : MonoBehaviour
         for (int i = final.Count; i < _amount; i++)
             final.Add(upgrades[Random.Range(0, upgrades.Count)]);
 
-        for (int i = final.Count; final.Count < _amount + 1; i++)
+        for (int i = final.Count; final.Count < _amount; i++)
             final.Add(upgrades[Random.Range(0, upgrades.Count)]);
         foreach (Upgrade upgrade in upgrades)
             upgrade.gameObject.SetActive(false);
