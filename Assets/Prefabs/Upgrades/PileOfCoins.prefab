@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PileOfCoins
   _priceBoard: {fileID: 472332238547459279}
   _price: 10
-  _extraCoinsAmount: 0
+  _extraCoinsAmount: 1
 --- !u!65 &4733635591866531368
 BoxCollider:
   m_ObjectHideFlags: 0
