@@ -17,7 +17,6 @@ public class SlotMachineManager : MonoBehaviour
 
     private void Awake()
     {
-        print("test");
         SlotMachine.Manager = this;
         GameObject player = GameObject.FindWithTag("Player");
         if (player is not null)
