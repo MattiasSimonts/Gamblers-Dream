@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player
         private Tween _healthbarTween;
         private void UpdateHealthBar()
         {
-            _healthBar.fillAmount = (_maxHealth-Health) / _maxHealth;
+            _healthBar.fillAmount = 1 - ((_maxHealth-Health) / _maxHealth);
 
             if (_healthbarTween == null)
             {
