@@ -8,9 +8,11 @@ public class ClockManager : MonoBehaviour
 {
     [SerializeField] private string _clockSpawnerTag = "ClockSpawner";
     [SerializeField] private float _minDistanceFromPlayerToSpawner = 100f;
-    [SerializeField] private float _spawnInterval = 15f;
-    [SerializeField] private float _spawnIntervalPercentageChange = 0.9f;
-    
+    [SerializeField] private float _standardSpawnInterval = 15f;
+    [SerializeField] private float _spawnIntervalDecreasePerCoin = 0.3f;
+    public float SpawnInterval { }
+
+
     private List<ClockSpawner> _clockSpawners = new List<ClockSpawner>();
     private Transform _player;
     private float _timer = 0f;
@@ -39,8 +41,6 @@ public class ClockManager : MonoBehaviour
             clockSpawner => Vector3.Distance(clockSpawner.Position, _player.position) > _minDistanceFromPlayerToSpawner).ToList() ?? new List<ClockSpawner>();
         if(possibleSpawnLocations.Count == 0) return;
         possibleSpawnLocations[Random.Range(0, possibleSpawnLocations.Count)].Spawn();
-
-        _spawnInterval *= _spawnIntervalPercentageChange;
     }
 
     private void FixedUpdate()
@@ -48,9 +48,9 @@ public class ClockManager : MonoBehaviour
         if (IsSpawning)
         {
             _timer += Time.fixedDeltaTime;
-            if (_timer >= _spawnInterval)
+            if (_timer >= _standardSpawnInterval)
             {
-                _timer -= _spawnInterval;
+                _timer -= _standardSpawnInterval;
                 SpawnClock();
             }
         }
