@@ -22,6 +22,13 @@ namespace Assets.Scripts.Player
         private float _health;
         [SerializeField] private float _dmgOverTime;
 
+        public float DamageOvertime
+        {
+            get => _dmgOverTime;
+            set => _dmgOverTime = Mathf.Max(value,0.1f);
+        }
+        
+
         [SerializeField] private PlayerMovement _playerMovement;
         
 

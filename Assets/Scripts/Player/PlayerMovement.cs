@@ -47,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         get => _moveSpeed;
         set => _moveSpeed = value;
     }
+
+    public float DamageOvertime
+    {
+        get => _playerHP.DamageOvertime;
+        set =>  _playerHP.DamageOvertime = value;
+    }
     
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
