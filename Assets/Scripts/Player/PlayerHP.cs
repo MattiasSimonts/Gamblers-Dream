@@ -12,7 +12,6 @@ namespace Assets.Scripts.Player
 		[SerializeField] private Image _healthBar;
 		public event EventHandler OnHealthChanged;
 		private float _health;
-
 		public float Health
 		{
 			get { return _health; }
@@ -31,7 +30,7 @@ namespace Assets.Scripts.Player
         private Tween _healthbarTween;
         private void UpdateHealthBar()
         {
-            _healthBar.fillAmount = Health / _maxHealth;
+            _healthBar.fillAmount = (_maxHealth-Health) / _maxHealth;
 
             if (_healthbarTween == null)
             {
