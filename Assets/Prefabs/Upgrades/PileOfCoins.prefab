@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3819422629093670990}
+  - component: {fileID: 7621872614435919368}
+  - component: {fileID: 4733635591866531368}
   m_Layer: 6
   m_Name: PileOfCoins
   m_TagString: Untagged
@@ -26,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.66518444, y: 0.66518444, z: 0.66518444}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1592538617274293365}
   - {fileID: 1360838681002193654}
@@ -75,8 +77,45 @@ Transform:
   - {fileID: 7207677758326082598}
   - {fileID: 1146426216413744629}
   - {fileID: 3536989161840256770}
+  - {fileID: 3782921523491964886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7621872614435919368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951923715930971740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df9ce9881ea3584a9befecd6aa5af82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PileOfCoins
+  _priceBoard: {fileID: 472332238547459279}
+  _price: 10
+  _extraCoinsAmount: 0
+--- !u!65 &4733635591866531368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951923715930971740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6553257, y: 0.9999999, z: 0.63239086}
+  m_Center: {x: 0.34006986, y: 0, z: -0.42673156}
 --- !u!1001 &204110411885859508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2888,6 +2927,91 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba2de90a2d106724988b8c6ece7600c7, type: 3}
   m_PrefabInstance: {fileID: 7899871852398849622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7973154966961545261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3819422629093670990}
+    m_Modifications:
+    - target: {fileID: 5877801743789145409, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_Name
+      value: PriceBoard (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5033425
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5033423
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5033423
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.29418963
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0015033232
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.6875311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9582674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000000026830678
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.28587362
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000014657618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 102.47601
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+--- !u!114 &472332238547459279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7505347296812629218, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+  m_PrefabInstance: {fileID: 7973154966961545261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d53312ebb9b0241aa0160068e1bcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PriceBoard
+--- !u!4 &3782921523491964886 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6546533084903860219, guid: 878b780220f9f614ca36915fa5735c3c, type: 3}
+  m_PrefabInstance: {fileID: 7973154966961545261}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8239490095790305645
 PrefabInstance:
