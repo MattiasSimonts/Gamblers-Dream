@@ -8,5 +8,6 @@ namespace Assets.Scripts
         public void OnInteract(PlayerMovement playerMovement);
         public bool CanInteract { get; }
         public string InteractionName { get; }
+        public bool CanHold { get; }
     }
 }

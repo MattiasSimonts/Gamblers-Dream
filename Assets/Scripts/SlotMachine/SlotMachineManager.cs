@@ -7,11 +7,12 @@ using Random = System.Random;
 
 public class SlotMachineManager : MonoBehaviour
 {
-   [SerializeField] private string _slotMachineTag = "SlotMachine";
-   [SerializeField] private float _minDistance = 10f;
-   [SerializeField] private int _amountOfMachines = 4;
-   
-   private Transform _player;
+    [SerializeField] private string _slotMachineTag = "SlotMachine";
+    [SerializeField] private float _minDistance = 10f;
+    [SerializeField] private int _amountOfMachines = 4;
+    [SerializeField] private ClockManager _clockManager;
+
+    private Transform _player;
     private List<SlotMachine> _slotMachines = new List<SlotMachine>();
 
     private void Awake()
@@ -19,19 +20,19 @@ public class SlotMachineManager : MonoBehaviour
         print("test");
         SlotMachine.Manager = this;
         GameObject player = GameObject.FindWithTag("Player");
-        if(player is not null)
+        if (player is not null)
             _player = player.transform;
 
         var slotMachineObjects = GameObject.FindGameObjectsWithTag(_slotMachineTag);
         foreach (var slotMachineObject in slotMachineObjects)
-            if(slotMachineObject.TryGetComponent(out SlotMachine slotMachine))
-                if(!slotMachine.isTutorialMachine)
+            if (slotMachineObject.TryGetComponent(out SlotMachine slotMachine))
+                if (!slotMachine.isTutorialMachine)
                     _slotMachines.Add(slotMachine);
     }
 
     public void SwitchMachine()
     {
-        
+
         for (int i = GetAmountOfActiveMachines(); i < _amountOfMachines; i++)
         {
             Transform active = GetActiveSlotMachineTransform();
@@ -48,7 +49,7 @@ public class SlotMachineManager : MonoBehaviour
     private Transform GetActiveSlotMachineTransform()
     {
         foreach (SlotMachine slotMachine in _slotMachines)
-            if(slotMachine.IsEnabled) 
+            if (slotMachine.IsEnabled)
                 return slotMachine.transform;
         return _player;
     }
@@ -65,7 +66,9 @@ public class SlotMachineManager : MonoBehaviour
     {
         foreach (SlotMachine slotMachine in _slotMachines.Where(slotMachine => slotMachine.isSecondMachine))
             slotMachine.IsEnabled = true;
+
+        _clockManager.IsSpawning = true;
     }
-    
-    
+
+
 }

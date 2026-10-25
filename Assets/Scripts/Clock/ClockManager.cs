@@ -9,10 +9,13 @@ public class ClockManager : MonoBehaviour
     [SerializeField] private string _clockSpawnerTag = "ClockSpawner";
     [SerializeField] private float _minDistanceFromPlayerToSpawner = 100f;
     [SerializeField] private float _spawnInterval = 15f;
+    [SerializeField] private float _spawnIntervalPercentageChange = 0.9f;
     
     private List<ClockSpawner> _clockSpawners = new List<ClockSpawner>();
     private Transform _player;
     private float _timer = 0f;
+
+    public bool IsSpawning = false;
 
     private void Awake()
     {
@@ -36,15 +39,19 @@ public class ClockManager : MonoBehaviour
             clockSpawner => Vector3.Distance(clockSpawner.Position, _player.position) > _minDistanceFromPlayerToSpawner).ToList() ?? new List<ClockSpawner>();
         if(possibleSpawnLocations.Count == 0) return;
         possibleSpawnLocations[Random.Range(0, possibleSpawnLocations.Count)].Spawn();
+        _spawnInterval *= _spawnIntervalPercentageChange;
     }
 
     private void FixedUpdate()
     {
-        _timer += Time.fixedDeltaTime;
-        if (_timer >= _spawnInterval)
+        if (IsSpawning)
         {
-            _timer -= _spawnInterval;
-            SpawnClock();
+            _timer += Time.fixedDeltaTime;
+            if (_timer >= _spawnInterval)
+            {
+                _timer -= _spawnInterval;
+                SpawnClock();
+            }
         }
     }
 }

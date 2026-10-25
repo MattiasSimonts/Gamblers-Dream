@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
     [CanBeNull] private IInteractable _lastInteractable;
-    
+
     private float _currentYAngle;
     private CharacterController _characterController;
     private bool _isSprinting;
@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 _input;
     [SerializeField] private TextMeshProUGUI _coinsDisplayText;
     private int _coins;
+    private bool _isHoldingInteract;
 
     public int CoinPickupUpgrades { get; set; } = 0;
 
@@ -101,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
         _sprint.canceled += SprintCanceled;
 
         _interact.performed += Interact;
+        _interact.canceled += (e) => _isHoldingInteract = false;
+        _interact.started += (e) => _isHoldingInteract = true;
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -147,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMoving(Time.deltaTime);
 
         HandleFOV(Time.deltaTime);
-        
+
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
             if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
@@ -159,6 +162,12 @@ public class PlayerMovement : MonoBehaviour
 
                 _lastCollider = hitInfo.collider;
                 _lastInteractable = hoveringInteractable;
+
+                Debug.Log($"Can hold: {hoveringInteractable.CanHold}, holding interact: {_isHoldingInteract}");
+                if (hoveringInteractable.CanHold && _isHoldingInteract)
+                {
+                    hoveringInteractable.OnInteract(this);
+                }
             }
             /*else
 
@@ -167,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
                 _leftClickToInteractText.text = _lastInteractable.InteractionName;
                 _leftClickToInteract.SetActive(_lastInteractable.CanInteract);
             }*/
-            
+
         }
         else
         {
