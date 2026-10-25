@@ -25,7 +25,6 @@ public class ClockScript : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _clockJumpsounds;
-
     private Coroutine _jumpCoroutine;
 
     private bool _hasJumped = false;
@@ -93,6 +92,8 @@ public class ClockScript : MonoBehaviour
         if (health is null)  return;
         health.Health -= _damage;
         Destroy(gameObject);
+
+        health.TakeClockDamage();
     }
     private void OnCollisionEnter(Collision collision)
     {

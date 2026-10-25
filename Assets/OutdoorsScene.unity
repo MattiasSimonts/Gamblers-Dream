@@ -1213,6 +1213,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545684113740747396, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
+      propertyPath: _clockManager
+      value: 
+      objectReference: {fileID: 663794939}
     - target: {fileID: 1323852306486029152, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
       propertyPath: _minDistanceFromPlayerToSpawner
       value: 20
@@ -1266,6 +1270,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
+--- !u!114 &663794939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1323852306486029152, guid: 26cdc7d9401a97e43947c3cd5cebf1e7, type: 3}
+  m_PrefabInstance: {fileID: 663794938}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f20829c49b81ed4096c39488470d6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClockManager
 --- !u!1 &745941705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2007225137074835463, guid: 61eec56da08dbf94ea9b7884f2af632f, type: 3}
