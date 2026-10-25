@@ -2,6 +2,7 @@ using Assets.Scripts;
 using Assets.Scripts.Player;
 using DG.Tweening;
 using System;
+using JetBrains.Annotations;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -38,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioResource _pickupAudioResource;
 
     private float _startingHeight;
-
+    [CanBeNull] private Collider _lastCollider;
+    [CanBeNull] private IInteractable _lastInteractable;
 
     private float _currentYAngle;
     private CharacterController _characterController;
@@ -144,15 +146,25 @@ public class PlayerMovement : MonoBehaviour
         HandleMoving(Time.deltaTime);
 
         HandleFOV(Time.deltaTime);
-
+        
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
-            _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
+            if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
+            {
+                IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
+                _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
+                _lastCollider = hitInfo.collider;
+                _lastInteractable = hoveringInteractable;
+            }
+            else
+                _leftClickToInteract.SetActive(_lastInteractable.CanInteract);
+            
         }
         else
         {
             _leftClickToInteract.SetActive(false);
+            _lastCollider = null;
+            _lastInteractable = null;
         }
 
         transform.position = new Vector3(transform.position.x, _startingHeight, transform.position.z);
