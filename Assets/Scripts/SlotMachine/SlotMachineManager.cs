@@ -9,6 +9,7 @@ public class SlotMachineManager : MonoBehaviour
 {
    [SerializeField] private string _slotMachineTag = "SlotMachine";
    [SerializeField] private float _minDistance = 10f;
+   [SerializeField] private int _amountOfMachines = 4;
    
    private Transform _player;
     private List<SlotMachine> _slotMachines = new List<SlotMachine>();
@@ -30,15 +31,18 @@ public class SlotMachineManager : MonoBehaviour
 
     public void SwitchMachine()
     {
-        Transform active = GetActiveSlotMachineTransform();
-        List<SlotMachine> availableSpawns = _slotMachines.Where(slotMachine =>
-            !slotMachine.IsEnabled &&
-            Vector3.Distance(_player.position, slotMachine.transform.position) > _minDistance &&
-            Vector3.Distance(active.position, slotMachine.transform.position)  > _minDistance).ToList() ?? new List<SlotMachine>();
         
-        if(availableSpawns.Count == 0) return;
-        print("test");
-        availableSpawns[UnityEngine.Random.Range(0, availableSpawns.Count)].IsEnabled = true;
+        for (int i = GetAmountOfActiveMachines(); i < _amountOfMachines; i++)
+        {
+            Transform active = GetActiveSlotMachineTransform();
+            List<SlotMachine> availableSpawns = _slotMachines.Where(slotMachine =>
+                !slotMachine.IsEnabled &&
+                Vector3.Distance(_player.position, slotMachine.transform.position) > _minDistance &&
+                Vector3.Distance(active.position, slotMachine.transform.position) > _minDistance).ToList() ?? new List<SlotMachine>();
+
+            if (availableSpawns.Count == 0) return;
+            availableSpawns[UnityEngine.Random.Range(0, availableSpawns.Count)].IsEnabled = true;
+        }
     }
 
     private Transform GetActiveSlotMachineTransform()
@@ -48,4 +52,20 @@ public class SlotMachineManager : MonoBehaviour
                 return slotMachine.transform;
         return _player;
     }
+
+    private int GetAmountOfActiveMachines()
+    {
+        int amount = 0;
+        foreach (SlotMachine slotMachine in _slotMachines.Where(slotMachine => slotMachine.IsEnabled))
+            amount++;
+        return amount;
+    }
+
+    public void SetSecondMachines()
+    {
+        foreach (SlotMachine slotMachine in _slotMachines.Where(slotMachine => slotMachine.isSecondMachine))
+            slotMachine.IsEnabled = true;
+    }
+    
+    
 }

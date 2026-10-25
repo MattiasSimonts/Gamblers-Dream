@@ -13,7 +13,9 @@ using Random = UnityEngine.Random;
 public class SlotMachine : MonoBehaviour
 {
     [SerializeField] private bool _isTutorialMachine;
+    [SerializeField] private bool _isSecondMachine;
     public bool isTutorialMachine => _isTutorialMachine;
+    public bool isSecondMachine => _isSecondMachine;
     [SerializeField] private bool _spinAutomaticly = true;
 
     [Header("Barrels")] [SerializeField] private Transform[] _barrelsTransforms;
@@ -121,9 +123,9 @@ public class SlotMachine : MonoBehaviour
                     PlaySound(_winSoundEffect);
                     _slotmachineText.text = "You win!";
                     IsEnabled = false;
-                    Manager.SwitchMachine();
                     if(_isTutorialMachine)
-                        Manager.SwitchMachine();
+                        Manager.SetSecondMachines();
+                    Manager.SwitchMachine();
                 }
             }
 
