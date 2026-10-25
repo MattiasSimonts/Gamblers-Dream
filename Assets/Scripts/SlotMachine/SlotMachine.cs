@@ -25,6 +25,7 @@ public class SlotMachine : MonoBehaviour
 
     private int _spinningBarrels = 0;
     private float _barrelSpinTimePast = 0f;
+    private bool _isStartedSpinning = false;
     private bool _isSpinning = false;
     public bool IsSpinning => _isSpinning;
 
@@ -216,6 +217,7 @@ public class SlotMachine : MonoBehaviour
         _spinningBarrels = _barrelsTransforms.Length;
 
         _isSpinning = true;
+        _isStartedSpinning = false;  
 
         _slotAudioSource.Play();
 
@@ -226,8 +228,9 @@ public class SlotMachine : MonoBehaviour
 
     public void Spin()
     {
-        if (_isSpinning || !_isEnabled)
+        if (_isSpinning || !_isEnabled || _isStartedSpinning)
             return;
+        _isStartedSpinning =  true;
         StartCoroutine(SpinHandle());
         PlaySound(_leverSoundEffect);
     }
@@ -235,7 +238,7 @@ public class SlotMachine : MonoBehaviour
     private void GetSpinResults()
     {
         _amountOfCoins = _baseAmountOfCoins;
-        if (Random.Range(0, 1) == 1)
+        if (Random.Range(0, 2) == 1)
         {
             string randomResult = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
             for (int i = 0; i < _barrelsTransforms.Length; i++)

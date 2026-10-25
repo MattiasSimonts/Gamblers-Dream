@@ -12,38 +12,42 @@ public class InteractableCoin : MonoBehaviour, IInteractable
     [SerializeField] private float _pickUpRadius = 0.0f;
 
     private static readonly List<InteractableCoin> _allCoins = new List<InteractableCoin>();
-    private void OnEnable()  => _allCoins.Add(this);
+    private void OnEnable() => _allCoins.Add(this);
     private void OnDisable() => _allCoins.Remove(this);
-    
+
     public string InteractionName => "Left click to pickup coin";
 
     public void OnInteract(PlayerMovement playerMovement)
     {
         HashSet<InteractableCoin> pickedUpCoins = new HashSet<InteractableCoin> { this };
-        if(playerMovement.CoinPickupUpgrades != 0)
+        if (playerMovement.CoinPickupUpgrades != 0)
         {
             for (int i = 0; i < playerMovement.CoinPickupUpgrades; i++)
             {
-                foreach (InteractableCoin interactableCoin in pickedUpCoins.ToList().SelectMany(
-                             coin => coin.GetTouchingCoins(),
-                             (coin, touchingCoin) => touchingCoin.GetComponent<InteractableCoin>()).Where(interactableCoin => interactableCoin))
-                    pickedUpCoins.Add(interactableCoin);
-
+                foreach (InteractableCoin interactableCoin in pickedUpCoins.ToList())
+                {
+                    var test = interactableCoin.GetTouchingCoins().ToList();
+                    foreach (InteractableCoin touchingCoin in test)
+                    {
+                        pickedUpCoins.Add(touchingCoin);
+                    }
+                }
             }
         }
-        
+
         playerMovement.AddCoins(pickedUpCoins.Count);
         foreach (InteractableCoin interactableCoin in pickedUpCoins)
         {
             interactableCoin.Kill();
         }
     }
-    
+
 
     private List<InteractableCoin> GetTouchingCoins()
     {
-        return _allCoins.Where(
-            coin => Vector3.Distance(coin.transform.position , transform.position) <= _pickUpRadius).ToList();
+        foreach (var coin in _allCoins)
+            Debug.Log($"{coin.name}: dist {Vector3.Distance(coin.transform.position, transform.position)}, radius {_pickUpRadius}", coin);
+        return _allCoins.Where(coin => Vector3.Distance(coin.transform.position, transform.position) <= _pickUpRadius).ToList();
     }
 
     private void Kill()
