@@ -121,6 +121,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [SerializeField] private int _startingCoins;
+
+    public int StartingCoins
+    {
+        get => _startingCoins;
+        set =>  _startingCoins = value;
+    }
     private void Start()
     {
         Coins = _startingCoins;

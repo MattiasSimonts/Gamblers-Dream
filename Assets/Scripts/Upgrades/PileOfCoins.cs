@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PileOfCoins : Upgrade
 {
+    [SerializeField] private int _extraCoinsAmount;
     protected override void DoUpgrade(PlayerMovement playerMovement)
     {
-        
+        _playerMovement.StartingCoins += _extraCoinsAmount;
     }
 
     protected override string GetName()
@@ -24,6 +25,6 @@ public class PileOfCoins : Upgrade
 
     protected override string GetDescription()
     {
-        return "Increases starting money by {}";
+        return $"Increases starting money by {_extraCoinsAmount}";
     }
 }
