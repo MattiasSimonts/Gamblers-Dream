@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player
 
         private void UpdateHealthBar()
         {
-            _healthBar.fillAmount = 1 - ((_maxHealth-Health) / _maxHealth);
+            _healthBar.fillAmount = (_maxHealth-Health) / _maxHealth;
 
             if (_healthbarTween == null)
             {
