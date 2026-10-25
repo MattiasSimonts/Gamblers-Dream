@@ -21,7 +21,7 @@ public class Blikje : Upgrade
 
     protected override string GetSecondName()
     {
-        return $"Currently you have {_playerMovement.SprintSpeed} sprint speed upgrades";
+        return $"Currently you have {_playerMovement.SprintSpeed} sprint speed";
     }
 
     protected override string GetTitle()
