@@ -164,9 +164,13 @@ public class PlayerMovement : MonoBehaviour
                 _lastInteractable = hoveringInteractable;
 
                 Debug.Log($"Can hold: {hoveringInteractable.CanHold}, holding interact: {_isHoldingInteract}");
-                if (hoveringInteractable.CanHold && _isHoldingInteract)
+                
+            }
+            else
+            {
+                if (_lastInteractable.CanHold && _isHoldingInteract)
                 {
-                    hoveringInteractable.OnInteract(this);
+                    _lastInteractable.OnInteract(this);
                 }
             }
             /*else

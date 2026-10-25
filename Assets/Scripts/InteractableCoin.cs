@@ -17,8 +17,6 @@ public class InteractableCoin : MonoBehaviour, IInteractable
     
     public string InteractionName => "Left click to pickup coin";
 
-    public bool CanHold => false;
-
     public void OnInteract(PlayerMovement playerMovement)
     {
         HashSet<InteractableCoin> pickedUpCoins = new HashSet<InteractableCoin> { this };

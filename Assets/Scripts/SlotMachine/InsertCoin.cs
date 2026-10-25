@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InsertCoin : MonoBehaviour, IInteractable
 {
+    [SerializeField] private float _startInteractCooldown = 0.5f;
+    [SerializeField] private float _interactCooldownChange = 0.9f;
+    private float _currentInteractCooldown;
+    private float _currentInteractTimer;
     [SerializeField] GameObject _slotMachineParent;
     private SlotMachine _slotMachine;
 
@@ -13,6 +17,11 @@ public class InsertCoin : MonoBehaviour, IInteractable
     }
 
     public void OnInteract(PlayerMovement playerMovement)
+    {
+        TryInsertCoin(playerMovement);
+    }
+
+    private void TryInsertCoin(PlayerMovement playerMovement)
     {
         if (playerMovement.Coins >= 1)
         {
@@ -24,8 +33,6 @@ public class InsertCoin : MonoBehaviour, IInteractable
     public bool CanInteract => CanInteractBooleanMaker();
 
     public string InteractionName => "Press left click to insert coin";
-
-    public bool CanHold => true;
 
     private bool CanInteractBooleanMaker()
     {
