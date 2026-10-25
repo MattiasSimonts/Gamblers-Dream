@@ -18,7 +18,6 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
         playerMovement.Coins -= _price;
         HasPurchast = true;
         _amountOfPurchases++;
-        _priceBoard.SetText(GetTitle(), GetDescription());
 
 
     }
@@ -26,7 +25,8 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
     private void Start()
     {
         _playerMovement =  GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-        _priceBoard.SetText(GetName(), GetSecondName());
+        _priceBoard.SetText(GetTitle(), GetDescription());
+
     }
 
     protected abstract void DoUpgrade(PlayerMovement playerMovement);
