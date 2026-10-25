@@ -3611,6 +3611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: energyBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3742976131499765036, guid: ebff683a28591d046aa0b1ade0297a75, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 87880e56c658a954cb4f5a80808735e7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3772,6 +3776,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2199218773208257311, guid: 48e4f16ba8a86bd4d89175ead53ba1c7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a32bfc9e9a1bf6409ce4142e2b0d092, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3914,6 +3922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillow
       objectReference: {fileID: 0}
+    - target: {fileID: 3516884231572097265, guid: b8a8bf4e2f0faa74d833e23d7931e5b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 77452d5401ed20d47875b6b51b6a5f8b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3995,6 +4007,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5554401184117919980, guid: 23ed33bff7a3394419b0e0a3853be767, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a54bd1250d0a35c4fbe076f340598853, type: 2}
     - target: {fileID: 6203090573951512889, guid: 23ed33bff7a3394419b0e0a3853be767, type: 3}
       propertyPath: m_Name
       value: can
