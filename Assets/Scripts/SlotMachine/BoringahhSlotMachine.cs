@@ -9,7 +9,8 @@ public class BoringahhSlotMachine : MonoBehaviour, IInteractable
 
     public void OnInteract(PlayerMovement playerMovement)
     {
-            TransitionManager.Instance().Transition("OutdoorsScene", _transition, 0);
+       playerMovement.Reset();
+       TransitionManager.Instance().Transition("OutdoorsScene", _transition, 0);
     }
 
     public bool CanInteract => true;
