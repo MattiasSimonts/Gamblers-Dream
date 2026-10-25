@@ -40,6 +40,7 @@ public class ClockScript : MonoBehaviour
     private void Awake()
     {
         Speed = _speed;
+        _clockRB.isKinematic = true;
     }
 
     private void FixedUpdate()
@@ -72,6 +73,8 @@ public class ClockScript : MonoBehaviour
         Vector3 playerDirection = _player.position - transform.position;
 
         yield return new WaitForSeconds(_jumpWindUpTime);
+
+        _clockRB.isKinematic = false;
 
         playerDirection = new Vector3(playerDirection.x, 0, playerDirection.z).normalized;
 
