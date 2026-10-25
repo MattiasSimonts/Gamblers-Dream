@@ -99,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
         _interact.performed += Interact;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        //Physics.gravity = new Vector3(0, -5f, 0);
     }
 
     private void Interact(InputAction.CallbackContext obj)

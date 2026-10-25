@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +14,22 @@ public class ClockScript : MonoBehaviour
     
     [SerializeField] private LayerMask _playerLayer;
 
+    [SerializeField] private float _jumpDistance;
+    [SerializeField] private float _jumpHorizontalPower;
+    [SerializeField] private float _jumpVerticalPower;
+    [SerializeField] private float _jumpWindUpTime;
+    [SerializeField] private Rigidbody _clockRB;
+    [SerializeField] private GameObject _deathParticleSystem;
+
+    private Coroutine _jumpCoroutine;
+
+    private bool _hasJumped = false;
+    public float Speed
+    {
+        get { return _agent.speed; }
+        set { _agent.speed = value; }
+    }
+
     private void Awake()
     {
         _agent.speed = _speed;
@@ -21,7 +38,39 @@ public class ClockScript : MonoBehaviour
     private void FixedUpdate()
     {
         if(_player is null) return;
-        _agent.destination = _player.position;
+
+        if(_agent.enabled)
+        {
+            _agent.destination = _player.position;
+
+            if (_agent.pathPending) return;
+
+            Debug.Log(_agent.remainingDistance);
+
+            if (_agent.remainingDistance <= _jumpDistance && _jumpCoroutine == null)
+            {
+                _jumpCoroutine = StartCoroutine(StartJump());
+            }
+        }
+    }
+
+    private IEnumerator StartJump()
+    {
+        _agent.enabled = false;
+
+        Vector3 playerDirection = _player.position - transform.position;
+
+        yield return new WaitForSeconds(_jumpWindUpTime);
+
+        playerDirection = new Vector3(playerDirection.x, 0, playerDirection.z).normalized;
+
+        Vector3 jumpForce = (playerDirection * _jumpHorizontalPower) + (Vector3.up * _jumpVerticalPower);
+
+        _clockRB.AddForce(jumpForce, ForceMode.Impulse);
+
+        _hasJumped = true;
+
+        yield return null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +80,24 @@ public class ClockScript : MonoBehaviour
         PlayerHP health = other.GetComponent<PlayerHP>();
         if (health is null)  return;
         health.Health -= _damage;
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_hasJumped)
+        {
+            StartCoroutine(Die());
+        }
+    }
+
+    private IEnumerator Die()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        if (_deathParticleSystem != null)
+        {
+            Instantiate(_deathParticleSystem, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }
