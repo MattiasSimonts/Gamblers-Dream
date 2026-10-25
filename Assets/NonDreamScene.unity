@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bd443cddd7b88ea4bbbc4e48122cc04d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c884f787da58e664d93de4f0268bebfe, type: 2}
     - target: {fileID: 919132149155446097, guid: bd443cddd7b88ea4bbbc4e48122cc04d, type: 3}
       propertyPath: m_Name
       value: Bar
@@ -1185,6 +1189,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sleeping pills
       objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: 23ed8a0213230be4e8571c7f3be85a0d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 053a68a093f301a49b44f7ba3360b5d8, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 23ed8a0213230be4e8571c7f3be85a0d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 053a68a093f301a49b44f7ba3360b5d8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1739,6 +1751,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -1439730007547781893, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35ce8de99400ae446b4f22c41ec247b0, type: 2}
+    - target: {fileID: -958501997748323502, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35ce8de99400ae446b4f22c41ec247b0, type: 2}
+    - target: {fileID: -248005119892688762, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35ce8de99400ae446b4f22c41ec247b0, type: 2}
     - target: {fileID: 919132149155446097, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
       propertyPath: m_Name
       value: boringslotApplied
@@ -1747,6 +1771,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35ce8de99400ae446b4f22c41ec247b0, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 35ce8de99400ae446b4f22c41ec247b0, type: 2}
     - target: {fileID: 8513859187771203891, guid: 489faaca33343b742b7b54ee9c18085b, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1889,6 +1921,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 579337751605229455, guid: 90bb7bb7b1805d54b831cafb725706e4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b5e4032164591ad4f8805c247c5cc122, type: 2}
     - target: {fileID: 1372125561623189082, guid: 90bb7bb7b1805d54b831cafb725706e4, type: 3}
       propertyPath: m_Name
       value: Magnet
