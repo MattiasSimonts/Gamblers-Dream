@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using EasyTransition;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Player
 {
     public class PlayerHP : MonoBehaviour
     {
+        [SerializeField] private TransitionSettings _transition;
         [SerializeField] private Image _healthBar;
         [SerializeField] private float _maxHealth;
 
@@ -73,7 +75,8 @@ namespace Assets.Scripts.Player
         private void WakeUp()
         {
             Debug.Log("You woke up");
-            SceneManager.LoadScene(1);
+
+            TransitionManager.Instance().Transition("NonDreamScene", _transition, 0);
         }
 
 

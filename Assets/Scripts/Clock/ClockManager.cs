@@ -39,6 +39,7 @@ public class ClockManager : MonoBehaviour
             clockSpawner => Vector3.Distance(clockSpawner.Position, _player.position) > _minDistanceFromPlayerToSpawner).ToList() ?? new List<ClockSpawner>();
         if(possibleSpawnLocations.Count == 0) return;
         possibleSpawnLocations[Random.Range(0, possibleSpawnLocations.Count)].Spawn();
+
         _spawnInterval *= _spawnIntervalPercentageChange;
     }
 

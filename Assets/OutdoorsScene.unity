@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1676,6 +1676,10 @@ PrefabInstance:
       propertyPath: _maxHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8712565701476708428, guid: 75dcabaf9a720504196a2626d2277ea4, type: 3}
+      propertyPath: _transition
+      value: 
+      objectReference: {fileID: 11400000, guid: 013263c83b6a84c4d95beaa8bd163ac8, type: 2}
     m_RemovedComponents:
     - {fileID: 2483515261185002810, guid: 75dcabaf9a720504196a2626d2277ea4, type: 3}
     m_RemovedGameObjects: []
