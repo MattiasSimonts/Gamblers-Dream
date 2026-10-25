@@ -242,7 +242,6 @@ public class SlotMachine : MonoBehaviour
             {
                 _results[i] = randomResult;
                 _amountOfCoins *= (_rotationMap[randomResult].Item2 + _generalWeight);
-                print("test");
             }
         }
         else
@@ -255,7 +254,14 @@ public class SlotMachine : MonoBehaviour
 
             _results[Random.Range(0, _barrelsTransforms.Length)] = _rotationMap.Keys.ElementAt(Random.Range(0, _rotationMap.Count));
         }
-        if(_amountOfCoins == 0) _amountOfCoins = 1; 
+        
+        if(_amountOfCoins == 0)
+        {
+            _amountOfCoins = 1;
+            print($"results = {_results[0]} {_results[1]} {_results[2]}\n" +
+                  $"Weights + {_rotationMap[_results[0]].Item2} {_rotationMap[_results[1]].Item2} {_rotationMap[_results[3]].Item2}\n" +
+                  $"BaseCoins = {_baseAmountOfCoins} ");
+        }
         _baseAmountOfCoins = 0;
     }
 
