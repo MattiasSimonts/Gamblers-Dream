@@ -20,4 +20,5 @@ public class PullLever : MonoBehaviour, IInteractable
 
     public string InteractionName => "Left click to gamble";
 
+    public string InteractionDescription => "";
 }

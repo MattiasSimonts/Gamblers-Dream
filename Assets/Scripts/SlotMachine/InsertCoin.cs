@@ -34,6 +34,8 @@ public class InsertCoin : MonoBehaviour, IInteractable
 
     public string InteractionName => _slotMachine.IsEnabled ? "Press left click to insert coin" : "Out of order";
 
+    public string InteractionDescription => _slotMachine.IsEnabled ? "Press handle to gamble" : "";
+
     private bool CanInteractBooleanMaker()
     {
         return !_slotMachine.IsSpinning;

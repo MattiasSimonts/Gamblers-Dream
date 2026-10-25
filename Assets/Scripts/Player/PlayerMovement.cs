@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private GameObject _leftClickToInteract;
     [SerializeField] private TextMeshProUGUI _leftClickToInteractText;
+    [SerializeField] private TextMeshProUGUI _descriptionText;
 
     [SerializeField] private float _normalFOV;
     [SerializeField] private float _sprintFOV;
@@ -186,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
                 _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
 
                 _leftClickToInteractText.text = hoveringInteractable.InteractionName;
+                _descriptionText.text = hoveringInteractable.InteractionDescription;
 
                 _lastCollider = hitInfo.collider;
                 _lastInteractable = hoveringInteractable;

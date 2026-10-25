@@ -396,7 +396,7 @@ MonoBehaviour:
   m_ShadowVariant: 0
   m_ShadowPrecision: 0
   useOldInspector: 0
-  useVolumetric: 1
+  useVolumetric: 0
   featuresFoldout: 1
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 8712565701476708428}
   - component: {fileID: 8704235426664219168}
   - component: {fileID: 3341285005947421103}
+  - component: {fileID: 8053034082853047665}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -464,6 +465,7 @@ MonoBehaviour:
   _yRotationLimits: {x: -85, y: 70}
   _leftClickToInteract: {fileID: 0}
   _leftClickToInteractText: {fileID: 0}
+  _descriptionText: {fileID: 0}
   _normalFOV: 61
   _sprintFOV: 70
   _fovChangeSpeed: 25
@@ -474,12 +476,12 @@ MonoBehaviour:
   _gravity: 0
   _playerHP: {fileID: 8712565701476708428}
   _sprintHPUsagePerSecond: 1
-  _audioSource: {fileID: 3341285005947421103}
+  _audioSource: {fileID: 8053034082853047665}
   _pickupAudioResource: {fileID: 6418180475301049370, guid: 6495ff64845c0644d8dac3a718d954f2, type: 2}
   _movementVelocity: {x: 0, y: 0, z: 0}
   _input: {x: 0, y: 0, z: 0}
   _coinsDisplayText: {fileID: 0}
-  _startingCoins: 5
+  _startingCoins: 2
 --- !u!143 &3528013631807705129
 CharacterController:
   m_ObjectHideFlags: 0
@@ -517,10 +519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc32b9066c245a45a79167206da27e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.PlayerHP
+  _transition: {fileID: 11400000, guid: 013263c83b6a84c4d95beaa8bd163ac8, type: 2}
   _healthBar: {fileID: 0}
   _maxHealth: 100
   _audioDamageSource: {fileID: 3341285005947421103}
   _audioDamageResource: {fileID: 6418180475301049370, guid: 480e405ca2b9ee049afe930e8b560916, type: 2}
+  _dmgOverTime: 0.5
 --- !u!82 &8704235426664219168
 AudioSource:
   m_ObjectHideFlags: 0
@@ -619,6 +623,103 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!82 &3341285005947421103
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5148589068790517690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &8053034082853047665
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
