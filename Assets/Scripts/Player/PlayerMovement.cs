@@ -12,7 +12,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera _playerCamera;
-
     [SerializeField] private InputActionAsset _playerInputs;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _accelartionSpeed;
@@ -24,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 _yRotationLimits;
 
     [SerializeField] private GameObject _leftClickToInteract;
+    [SerializeField] private TextMeshProUGUI _leftClickToInteractText;
 
     [SerializeField] private float _normalFOV;
     [SerializeField] private float _sprintFOV;
@@ -102,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        //Physics.gravity = new Vector3(0, -5f, 0);
     }
 
     private void Interact(InputAction.CallbackContext obj)
@@ -153,6 +152,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
                 _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
+
+                _leftClickToInteractText.text = hoveringInteractable.InteractionName;
+
                 _lastCollider = hitInfo.collider;
                 _lastInteractable = hoveringInteractable;
             }

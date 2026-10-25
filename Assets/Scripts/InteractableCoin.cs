@@ -6,6 +6,8 @@ public class InteractableCoin : MonoBehaviour, IInteractable
 {
     public bool CanInteract { get { return true; } }
 
+    public string InteractionName => "Left click to pickup coin";
+
     public void OnInteract(PlayerMovement playerMovement)
     {
         playerMovement.AddCoins(1);
