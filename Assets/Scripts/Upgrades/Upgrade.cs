@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class Upgrade : MonoBehaviour, IInteractable
 {
+    [SerializeField] private PriceBoard _priceBoard;
     [SerializeField] protected int _price;
     protected int _amountOfPurchases = 0;
     private bool HasPurchast = false;
@@ -17,21 +18,25 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
         playerMovement.Coins -= _price;
         HasPurchast = true;
         _amountOfPurchases++;
+        _priceBoard.SetText(GetTitle(), GetDescription());
 
 
     }
 
     private void Start()
     {
-        _playerMovement =  GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();;
+        _playerMovement =  GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        _priceBoard.SetText(GetName(), GetSecondName());
     }
 
     protected abstract void DoUpgrade(PlayerMovement playerMovement);
     protected abstract string GetName();
     protected abstract string GetSecondName();
+    protected abstract string GetTitle();
+    protected abstract string GetDescription();
     public bool CanInteract => true;
     public string InteractionName => HasPurchast ? "You have bought the maximum of this upgrade." : GetName();
-    public string InteractionDescription => HasPurchast ? "Come By an other time!" : GetName();
+    public string InteractionDescription => HasPurchast ? "Come By an other time!" : GetSecondName();
     
     private void OnEnable()  => SceneManager.sceneLoaded += OnSceneLoaded;
     private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;

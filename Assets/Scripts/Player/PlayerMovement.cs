@@ -41,6 +41,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioResource _pickupAudioResource;
 
     public PlayerHP GetPlayerHp => _playerHP;
+
+    public float MovementSpeed
+    {
+        get => _moveSpeed;
+        set => _moveSpeed = value;
+    }
     
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;

@@ -17,4 +17,14 @@ public class SleepingPils : Upgrade
     {
         return $"Currently you have {_amountOfPurchases} health upgrades";
     }
+
+    protected override string GetTitle()
+    {
+        return "SleepingPils";
+    }
+
+    protected override string GetDescription()
+    {
+        return "";
+    }
 }
