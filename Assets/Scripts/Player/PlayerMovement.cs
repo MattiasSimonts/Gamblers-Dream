@@ -320,6 +320,7 @@ public class PlayerMovement : MonoBehaviour
     public void Reset()
     {
         Coins = _startingCoins;
+        InShop = false;
         _playerHP.Reset();
     }
 
