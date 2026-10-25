@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class ClockScript : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class ClockScript : MonoBehaviour
     [SerializeField] private Rigidbody _clockRB;
     [SerializeField] private GameObject _deathParticleSystem;
     [SerializeField] private Animator _clockAnimator;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioResource _clockJumpsounds;
 
     private Coroutine _jumpCoroutine;
 
@@ -63,6 +67,10 @@ public class ClockScript : MonoBehaviour
         Speed = 0;
 
         _agent.enabled = false;
+
+        _audioSource.resource = _clockJumpsounds;
+
+        _audioSource.Play();
 
         Vector3 playerDirection = _player.position - transform.position;
 

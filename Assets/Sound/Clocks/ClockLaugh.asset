@@ -27,13 +27,13 @@ AudioRandomContainer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ClockLaugh
-  m_Volume: 0
+  m_Volume: -16.1
   m_Pitch: 305
-  m_AutomaticTriggerTime: 0
+  m_AutomaticTriggerTime: 9.8
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 538}
-  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 3}
+  m_PitchRandomizationRange: {x: -347.83734, y: 190.16266}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 10}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
   - {fileID: 1425830267653587028}
