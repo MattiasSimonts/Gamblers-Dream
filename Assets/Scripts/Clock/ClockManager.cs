@@ -10,12 +10,13 @@ public class ClockManager : MonoBehaviour
     [SerializeField] private float _minDistanceFromPlayerToSpawner = 100f;
     [SerializeField] private float _standardSpawnInterval = 15f;
     [SerializeField] private float _spawnIntervalDecreasePerCoin = 0.3f;
+    [SerializeField] private float _minSpawnTime = 2f;
     [SerializeField] private PlayerMovement _playermovement;
     public float SpawnInterval
     {
         get 
         { 
-            return _standardSpawnInterval - _spawnIntervalDecreasePerCoin * _playermovement.Coins; 
+            return Mathf.Clamp(_standardSpawnInterval - _spawnIntervalDecreasePerCoin * _playermovement.Coins, _minSpawnTime, 100f); 
         }
     }
 

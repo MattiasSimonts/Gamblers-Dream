@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _accelartionSpeed;
     [SerializeField] private float _deccelartionSpeed;
-    [SerializeField] private float _sprintSpeed;
+    public float SprintSpeed;
     [SerializeField] private float _sprintAccelartionSpeed;
     [SerializeField] private float _lookSens;
     [SerializeField] private Transform _cameraHolder;
@@ -40,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _pickupAudioResource;
 
+    public PlayerHP GetPlayerHp => _playerHP;
+
+    public float MovementSpeed
+    {
+        get => _moveSpeed;
+        set => _moveSpeed = value;
+    }
+    
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
     [CanBeNull] private IInteractable _lastInteractable;
@@ -179,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
+            //if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
             {
                 IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
                 _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
@@ -230,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
             if (_isSprinting)
             {
                 _movementVelocity += _sprintAccelartionSpeed * deltaTime * input;
-                _movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _sprintSpeed);
+                _movementVelocity = Vector3.ClampMagnitude(_movementVelocity, SprintSpeed);
 
                 _playerHP.Health -= _sprintHPUsagePerSecond * Time.deltaTime;
             }
@@ -261,6 +269,13 @@ public class PlayerMovement : MonoBehaviour
 
         _cameraHolder.localRotation = Quaternion.Euler(_currentYAngle, 0f, 0f);
     }
+
+    public void Reset()
+    {
+        Coins = _startingCoins;
+        _playerHP.Reset();
+    }
+
     private static PlayerMovement Instance { get; set; }
 
 

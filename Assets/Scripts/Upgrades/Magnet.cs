@@ -18,4 +18,14 @@ public class Magnet : Upgrade , IInteractable
     {
         return $"Currently you have {_playerMovement.CoinPickupUpgrades} magnet upgrades";
     }
+
+    protected override string GetTitle()
+    {
+        return "Magnet";
+    }
+
+    protected override string GetDescription()
+    {
+        return "";
+    }
 }
