@@ -24,6 +24,6 @@ public class PileOfCoins : Upgrade
 
     protected override string GetDescription()
     {
-        return $"";
+        return "Increases starting money by {}";
     }
 }
