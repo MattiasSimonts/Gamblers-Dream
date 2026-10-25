@@ -19,4 +19,5 @@ public class PullLever : MonoBehaviour, IInteractable
     public bool CanInteract => !_slotMachine.IsSpinning && _slotMachine.HasCoins;
 
     public string InteractionName => "Left click to gamble";
+
 }

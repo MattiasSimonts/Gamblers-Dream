@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private Image _healthBar;
         [SerializeField] private float _maxHealth;
+
+        [SerializeField] private AudioSource _audioDamageSource;
+        [SerializeField] private AudioResource _audioDamageResource;
         public event EventHandler OnHealthChanged;
         private float _health;
         
@@ -53,6 +57,11 @@ namespace Assets.Scripts.Player
                 _healthbarTween = _healthBar.transform.parent.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1.0f, 1, 0f);
                 _healthbarTween.onComplete = DeleteTween;
             }
+        }
+        public void TakeClockDamage()
+        {
+            _audioDamageSource.resource = _audioDamageResource;
+            _audioDamageSource.Play();
         }
 
         private void DeleteTween()

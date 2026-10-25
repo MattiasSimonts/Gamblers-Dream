@@ -25,7 +25,6 @@ public class ClockScript : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _clockJumpsounds;
-
     private Coroutine _jumpCoroutine;
 
     private bool _hasJumped = false;
@@ -41,6 +40,7 @@ public class ClockScript : MonoBehaviour
     private void Awake()
     {
         Speed = _speed;
+        _clockRB.isKinematic = true;
     }
 
     private void FixedUpdate()
@@ -74,11 +74,15 @@ public class ClockScript : MonoBehaviour
 
         yield return new WaitForSeconds(_jumpWindUpTime);
 
+        _clockRB.isKinematic = false;
+
         playerDirection = new Vector3(playerDirection.x, 0, playerDirection.z).normalized;
 
         Vector3 jumpForce = (playerDirection * _jumpHorizontalPower) + (Vector3.up * _jumpVerticalPower);
 
         _clockRB.AddForce(jumpForce, ForceMode.Impulse);
+
+        _clockRB.AddTorque(transform.right * 10f);
 
         _hasJumped = true;
 
@@ -93,6 +97,8 @@ public class ClockScript : MonoBehaviour
         if (health is null)  return;
         health.Health -= _damage;
         Destroy(gameObject);
+
+        health.TakeClockDamage();
     }
     private void OnCollisionEnter(Collision collision)
     {

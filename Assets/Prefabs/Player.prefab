@@ -463,6 +463,7 @@ MonoBehaviour:
   _cameraHolder: {fileID: 3476865759740301224}
   _yRotationLimits: {x: -85, y: 70}
   _leftClickToInteract: {fileID: 0}
+  _leftClickToInteractText: {fileID: 0}
   _normalFOV: 61
   _sprintFOV: 70
   _fovChangeSpeed: 25
@@ -518,6 +519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Player.PlayerHP
   _healthBar: {fileID: 0}
   _maxHealth: 100
+  _audioDamageSource: {fileID: 3341285005947421103}
+  _audioDamageResource: {fileID: 6418180475301049370, guid: 480e405ca2b9ee049afe930e8b560916, type: 2}
 --- !u!82 &8704235426664219168
 AudioSource:
   m_ObjectHideFlags: 0

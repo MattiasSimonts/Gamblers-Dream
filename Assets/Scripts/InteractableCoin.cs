@@ -9,41 +9,49 @@ public class InteractableCoin : MonoBehaviour, IInteractable
 {
     public bool CanInteract => true;
 
-    [SerializeField] private float _pickUpRadius = 500;
+    [SerializeField] private float _pickUpRadius = 0.0f;
+
+    private static readonly List<InteractableCoin> _allCoins = new List<InteractableCoin>();
+    private void OnEnable() => _allCoins.Add(this);
+    private void OnDisable() => _allCoins.Remove(this);
 
     public string InteractionName => "Left click to pickup coin";
 
     public void OnInteract(PlayerMovement playerMovement)
     {
         HashSet<InteractableCoin> pickedUpCoins = new HashSet<InteractableCoin> { this };
-        for (int i = 0; i < playerMovement.CoinPickupUpgrades; i++)
+        if (playerMovement.CoinPickupUpgrades != 0)
         {
-            foreach (InteractableCoin interactableCoin in pickedUpCoins.ToList().SelectMany(
-                         coin => coin.GetTouchingCoins(), 
-                         (coin, touchingCoin) => touchingCoin.GetComponent<InteractableCoin>()).Where(interactableCoin => interactableCoin))
-                pickedUpCoins.Add(interactableCoin);
-            
+            for (int i = 0; i < playerMovement.CoinPickupUpgrades; i++)
+            {
+                foreach (InteractableCoin interactableCoin in pickedUpCoins.ToList())
+                {
+                    var test = interactableCoin.GetTouchingCoins().ToList();
+                    foreach (InteractableCoin touchingCoin in test)
+                    {
+                        pickedUpCoins.Add(touchingCoin);
+                    }
+                }
+            }
         }
-        
+
         playerMovement.AddCoins(pickedUpCoins.Count);
         foreach (InteractableCoin interactableCoin in pickedUpCoins)
         {
-            Destroy(interactableCoin.gameObject);
+            interactableCoin.Kill();
         }
     }
-    private readonly Collider[] _possibleCoins = new Collider[64];
 
-    private List<GameObject> GetTouchingCoins()
+
+    private List<InteractableCoin> GetTouchingCoins()
     {
-        var coins = new List<GameObject>();
-        int count = Physics.OverlapSphereNonAlloc(transform.position, _pickUpRadius, _possibleCoins);
+        foreach (var coin in _allCoins)
+            Debug.Log($"{coin.name}: dist {Vector3.Distance(coin.transform.position, transform.position)}, radius {_pickUpRadius}", coin);
+        return _allCoins.Where(coin => Vector3.Distance(coin.transform.position, transform.position) <= _pickUpRadius).ToList();
+    }
 
-        for (int i = 0; i < count; i++)
-        {
-            if (_possibleCoins[i].CompareTag("Coin"))
-                coins.Add(_possibleCoins[i].gameObject);
-        }
-
-        return coins;
+    private void Kill()
+    {
+        Destroy(gameObject);
     }
 }
