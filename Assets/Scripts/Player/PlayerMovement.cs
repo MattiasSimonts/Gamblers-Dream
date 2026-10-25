@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _accelartionSpeed;
     [SerializeField] private float _deccelartionSpeed;
+    [SerializeField] private InputAction _get1000gold;
     public float SprintSpeed;
     [SerializeField] private float _sprintAccelartionSpeed;
     [SerializeField] private float _lookSens;
@@ -146,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
 
         _playerInputs.Enable();
+        _get1000gold.Enable();
         _look = _playerInputs.FindAction("Look");
         _move = _playerInputs.FindAction("Move");
         _interact = _playerInputs.FindAction("Interact");
@@ -162,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
         _interact.canceled += (e) => _isHoldingInteract = false;
         _interact.started += (e) => _isHoldingInteract = true;
 
+        _get1000gold.performed += Get1000GoldPerformed;
         Cursor.lockState = CursorLockMode.Locked;
         
         if (Instance is not null && Instance != this)
@@ -174,6 +177,13 @@ public class PlayerMovement : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
+
+    private void Get1000GoldPerformed(InputAction.CallbackContext obj)
+    {
+        Coins += 1000;
+        ShopCoins += 1000;
+    }
+
     private void OnEnable()  => SceneManager.sceneLoaded += OnSceneLoaded;
     private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
