@@ -19,12 +19,14 @@ public class ShopManager : MonoBehaviour
         PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         List<Upgrade> upgrades = _shopItems.Select(shopItem => shopItem.GetComponent<Upgrade>()).ToList();
         List<Upgrade> availeble = upgrades.Where(upgrade => upgrade.Price < player.Coins).ToList();
-        List<Upgrade> final = new List<Upgrade>();
+        HashSet<Upgrade> final = new HashSet<Upgrade>();
         if (availeble.Count > 0)
             final.Add(availeble[Random.Range(0, availeble.Count)]);
-        
 
         for (int i = final.Count; i < _amount; i++)
+            final.Add(upgrades[Random.Range(0, upgrades.Count)]);
+
+        for (int i = final.Count; final.Count < _amount + 1; i++)
             final.Add(upgrades[Random.Range(0, upgrades.Count)]);
         foreach (Upgrade upgrade in upgrades)
             upgrade.gameObject.SetActive(false);
