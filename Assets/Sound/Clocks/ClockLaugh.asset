@@ -73,6 +73,7 @@ AudioRandomContainer:
   - {fileID: -8082200176492438345}
   - {fileID: 8501800627813844583}
   - {fileID: -6763898125189104534}
+  - {fileID: 7803772769433206209}
   m_AvoidRepeatingLast: 1
   m_PlaybackMode: 2
   m_TriggerMode: 1
@@ -82,6 +83,16 @@ AudioRandomContainer:
   m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 1
   m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7803772769433206209
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: paprika_{7803772769433206209}
+  m_AudioClip: {fileID: 8300000, guid: af411d4e48fcc6342a847e4098dc3bb0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
 --- !u!1233149941 &8364678135090730004
 AudioContainerElement:
   m_ObjectHideFlags: 1
