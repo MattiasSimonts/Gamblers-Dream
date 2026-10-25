@@ -317,15 +317,15 @@ MonoBehaviour:
   - {fileID: 5940777976626564922}
   - {fileID: 5407710292596937947}
   - {fileID: 2313239289522396664}
-  _generalWeight: 0.9
+  _generalWeight: 1
   _0DegreeCoinsValue: -0.1
-  _45DegreeCoinsValue: 0.4
-  _90DegreeCoinsValue: 0.3
-  _135DegreeCoinsValue: 0.6
-  _180DegreeCoinsValue: 0.7
-  _225DegreeCoinsValue: 0.5
-  _270DegreeCoinsValue: 0.8
-  _315DegreeCoinsValue: 0.2
+  _45DegreeCoinsValue: 0.1
+  _90DegreeCoinsValue: 0.15
+  _135DegreeCoinsValue: 0.25
+  _180DegreeCoinsValue: 0.3
+  _225DegreeCoinsValue: 0.2
+  _270DegreeCoinsValue: 0.5
+  _315DegreeCoinsValue: 0
   _slotAudioSource: {fileID: 6574524000091965920}
   _AudioSource: {fileID: 1627389309704954663}
   _slotClickSoundEffect: {fileID: 6418180475301049370, guid: ce0424ac164c38a4aa6495b73d214c1d, type: 2}
@@ -1228,6 +1228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903aa85e2375aaf449719d96de003d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InsertCoin
+  _startInteractCooldown: 0.5
+  _interactCooldownChange: 0.9
   _slotMachineParent: {fileID: 4665036006590060562}
 --- !u!65 &7972324403790971612
 BoxCollider:
