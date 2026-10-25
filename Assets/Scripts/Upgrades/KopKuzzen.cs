@@ -25,7 +25,7 @@ public class KopKuzzen : Upgrade
 
     protected override string GetDescription()
     {
-        return "";
+        return "Decreases the damage taken over time";
     }
     
 }
