@@ -18,29 +18,24 @@ public class InsertCoin : MonoBehaviour, IInteractable
 
     public void OnInteract(PlayerMovement playerMovement)
     {
+        if (!_slotMachine.IsEnabled)
+            return;
         TryInsertCoin(playerMovement);
     }
 
     private void TryInsertCoin(PlayerMovement playerMovement)
     {
-        if (playerMovement.Coins >= 1)
-        {
-            _slotMachine.InsertCoin();
-            playerMovement.AddCoins(-1);
-        }
+        if (playerMovement.Coins < 1) return;
+        _slotMachine.InsertCoin();
+        playerMovement.AddCoins(-1);
     }
 
     public bool CanInteract => CanInteractBooleanMaker();
 
-    public string InteractionName => "Press left click to insert coin";
+    public string InteractionName => _slotMachine.IsEnabled ? "Press left click to insert coin" : "Out of order";
 
     private bool CanInteractBooleanMaker()
     {
-        if (_slotMachine.IsSpinning)
-            return false;
-        if (!_slotMachine.IsEnabled)
-            return false;
-
-        return true;
+        return !_slotMachine.IsSpinning;
     }
 }
