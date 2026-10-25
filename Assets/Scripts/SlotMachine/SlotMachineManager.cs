@@ -11,6 +11,7 @@ public class SlotMachineManager : MonoBehaviour
     [SerializeField] private float _minDistance = 10f;
     [SerializeField] private int _amountOfMachines = 4;
     [SerializeField] private ClockManager _clockManager;
+    private PlayerMovement _playermovement;
 
     private Transform _player;
     private List<SlotMachine> _slotMachines = new List<SlotMachine>();
@@ -20,7 +21,11 @@ public class SlotMachineManager : MonoBehaviour
         SlotMachine.Manager = this;
         GameObject player = GameObject.FindWithTag("Player");
         if (player is not null)
+        {
             _player = player.transform;
+            _playermovement = player.GetComponent<PlayerMovement>();
+            _amountOfMachines += _playermovement.GamblingChipUpgrades;
+        }
 
         var slotMachineObjects = GameObject.FindGameObjectsWithTag(_slotMachineTag);
         foreach (var slotMachineObject in slotMachineObjects)
@@ -68,6 +73,4 @@ public class SlotMachineManager : MonoBehaviour
 
         _clockManager.IsSpawning = true;
     }
-
-
 }

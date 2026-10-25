@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isHoldingInteract;
 
     public int CoinPickupUpgrades { get; set; } = 0;
-
+    public int GamblingChipUpgrades { get; set; } = 0;
     public int Coins
     {
         get => _coins;
