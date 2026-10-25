@@ -11,7 +11,7 @@ public class Blikje : Upgrade
 
     protected override string GetDescription()
     {
-        return $"Increases sprinting speed";
+        return $"Slightly Increases sprinting speed";
     }
 
     protected override string GetName()
