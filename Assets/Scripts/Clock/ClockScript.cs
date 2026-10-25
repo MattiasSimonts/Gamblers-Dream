@@ -20,6 +20,7 @@ public class ClockScript : MonoBehaviour
     [SerializeField] private float _jumpWindUpTime;
     [SerializeField] private Rigidbody _clockRB;
     [SerializeField] private GameObject _deathParticleSystem;
+    [SerializeField] private Animator _clockAnimator;
 
     private Coroutine _jumpCoroutine;
 
@@ -27,12 +28,15 @@ public class ClockScript : MonoBehaviour
     public float Speed
     {
         get { return _agent.speed; }
-        set { _agent.speed = value; }
+        set { 
+            _agent.speed = value;
+            _clockAnimator.SetFloat("Speed", value);
+        }
     }
 
     private void Awake()
     {
-        _agent.speed = _speed;
+        Speed = _speed;
     }
 
     private void FixedUpdate()
@@ -56,6 +60,8 @@ public class ClockScript : MonoBehaviour
 
     private IEnumerator StartJump()
     {
+        Speed = 0;
+
         _agent.enabled = false;
 
         Vector3 playerDirection = _player.position - transform.position;

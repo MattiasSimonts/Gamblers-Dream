@@ -839,6 +839,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 165610740}
     - target: {fileID: 6872401297669311183, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+      propertyPath: _clockAnimator
+      value: 
+      objectReference: {fileID: 785376760}
+    - target: {fileID: 6872401297669311183, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
       propertyPath: _jumpWindUpTime
       value: 0.5
       objectReference: {fileID: 0}
@@ -2002,6 +2006,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
+--- !u!95 &785376760 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2017906970848583457, guid: 5632ed5af8f3692458953e2a3309f81d, type: 3}
+  m_PrefabInstance: {fileID: 169825149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &837877739
 PrefabInstance:
   m_ObjectHideFlags: 0
