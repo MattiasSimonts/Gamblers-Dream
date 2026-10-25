@@ -10,7 +10,7 @@ public class ClockManager : MonoBehaviour
     [SerializeField] private float _minDistanceFromPlayerToSpawner = 100f;
     [SerializeField] private float _standardSpawnInterval = 15f;
     [SerializeField] private float _spawnIntervalDecreasePerCoin = 0.3f;
-    public float SpawnInterval { }
+    //public float SpawnInterval { }
 
 
     private List<ClockSpawner> _clockSpawners = new List<ClockSpawner>();
