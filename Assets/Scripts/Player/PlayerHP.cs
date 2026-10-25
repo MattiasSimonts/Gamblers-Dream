@@ -104,5 +104,10 @@ namespace Assets.Scripts.Player
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        public void Reset()
+        {
+            _health = _maxHealth;
+        }
     }
 }

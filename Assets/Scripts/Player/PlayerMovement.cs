@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioResource _pickupAudioResource;
 
+    public PlayerHP GetPlayerHp => _playerHP;
+    
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
     [CanBeNull] private IInteractable _lastInteractable;
@@ -179,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
         {
-            if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
+            //if (_lastCollider is null && _lastInteractable is null && hitInfo.collider != _lastCollider)
             {
                 IInteractable hoveringInteractable = hitInfo.collider.GetComponent<IInteractable>();
                 _leftClickToInteract.SetActive(hoveringInteractable.CanInteract);
