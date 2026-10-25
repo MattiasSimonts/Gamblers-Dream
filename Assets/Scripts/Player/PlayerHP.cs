@@ -9,28 +9,44 @@ namespace Assets.Scripts.Player
 {
     public class PlayerHP : MonoBehaviour
     {
-		[SerializeField] private Image _healthBar;
-		public event EventHandler OnHealthChanged;
-		private float _health;
-		public float Health
-		{
-			get { return _health; }
-			set {
-				if (_health == value)
-					return;
-				_health = value;
-				OnHealthChanged?.Invoke(this, null);
+        [SerializeField] private Image _healthBar;
+        [SerializeField] private float _maxHealth;
+        public event EventHandler OnHealthChanged;
+        private float _health;
+        
 
-				UpdateHealthBar();
+        public float Health
+        {
+            get => _health;
+            set
+            {
+                if (_health == value)
+                    return;
+                _health = value;
+                OnHealthChanged?.Invoke(this, null);
+
+                UpdateHealthBar();
 
                 if (_health <= 0)
-					WakeUp();
+                    WakeUp();
             }
-		}
+        }
+
+        public float MaxHealth
+        {
+            get => _maxHealth;
+            set
+            {
+                Health = value - _maxHealth;
+                _maxHealth = value;
+            }
+        }
+
         private Tween _healthbarTween;
+
         private void UpdateHealthBar()
         {
-            _healthBar.fillAmount = 1 - ((_maxHealth-Health) / _maxHealth);
+            _healthBar.fillAmount = (_maxHealth-Health) / _maxHealth;
 
             if (_healthbarTween == null)
             {
@@ -38,22 +54,22 @@ namespace Assets.Scripts.Player
                 _healthbarTween.onComplete = DeleteTween;
             }
         }
+
         private void DeleteTween()
         {
             _healthbarTween = null;
         }
+
         private void WakeUp()
         {
-			Debug.Log("You woke up");
-			SceneManager.LoadScene(0);
+            Debug.Log("You woke up");
+            SceneManager.LoadScene(0);
         }
 
-        [SerializeField] private int _maxHealth;
 
         private void Start()
         {
-			_health = _maxHealth;
+            _health = _maxHealth;
         }
-
     }
 }

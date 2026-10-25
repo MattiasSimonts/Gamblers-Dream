@@ -23,6 +23,8 @@ public class InsertCoin : MonoBehaviour, IInteractable
 
     public bool CanInteract => CanInteractBooleanMaker();
 
+    public string InteractionName => "Press left click to insert coin";
+
     private bool CanInteractBooleanMaker()
     {
         if (_slotMachine.IsSpinning)
