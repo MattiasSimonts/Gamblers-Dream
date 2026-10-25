@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class PileOfCoins : Upgrade
 {
+    private static int _amountOfPurchases = 0;
+    
     [SerializeField] private int _extraCoinsAmount;
     protected override void DoUpgrade(PlayerMovement playerMovement)
     {
         _playerMovement.StartingCoins += _extraCoinsAmount;
+        _amountOfPurchases++;
     }
 
     protected override string GetName()

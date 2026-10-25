@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class SleepingPils : Upgrade
 {
+    private static int _amountOfPurchases = 0;
+    
     [SerializeField] private int _amountExtraHealth = 15;
     protected override void DoUpgrade(PlayerMovement playerMovement)
     {
         _playerMovement.GetPlayerHp.MaxHealth += _amountExtraHealth;
+        _amountOfPurchases++;
     }
 
     protected override string GetName()

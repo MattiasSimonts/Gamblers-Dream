@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class KopKuzzen : Upgrade
 {
+    private static int _amountOfPurchases = 0;
+    
     [SerializeField] private float _reduceDamageTaken = 0.1f;
     protected override void DoUpgrade(PlayerMovement playerMovement)
     {
         _playerMovement.DamageOvertime -= _reduceDamageTaken;
+        _amountOfPurchases++;
     }
 
     protected override string GetName()
