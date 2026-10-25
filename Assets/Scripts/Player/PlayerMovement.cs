@@ -263,6 +263,13 @@ public class PlayerMovement : MonoBehaviour
 
         _cameraHolder.localRotation = Quaternion.Euler(_currentYAngle, 0f, 0f);
     }
+
+    public void Reset()
+    {
+        Coins = _startingCoins;
+        _playerHP.Health = _playerHP.MaxHealth;
+    }
+
     private static PlayerMovement Instance { get; set; }
 
 
