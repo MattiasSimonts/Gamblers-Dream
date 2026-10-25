@@ -26,6 +26,6 @@ public class Magnet : Upgrade , IInteractable
 
     protected override string GetDescription()
     {
-        return "";
+        return "Collect more coins per click";
     }
 }
