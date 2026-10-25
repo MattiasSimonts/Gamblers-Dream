@@ -47,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         get => _moveSpeed;
         set => _moveSpeed = value;
     }
+
+    public float DamageOvertime
+    {
+        get => _playerHP.DamageOvertime;
+        set =>  _playerHP.DamageOvertime = value;
+    }
     
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
@@ -70,6 +76,20 @@ public class PlayerMovement : MonoBehaviour
 
     public int CoinPickupUpgrades { get; set; } = 0;
     public int GamblingChipUpgrades { get; set; } = 0;
+    private bool _inShop;
+
+    public bool InShop
+    {
+        get { 
+            return _inShop;
+        }
+        set { 
+            _inShop = value;
+
+            UpdateCoinVisual();
+        }
+    }
+
     public int Coins
     {
         get => _coins;
@@ -82,13 +102,31 @@ public class PlayerMovement : MonoBehaviour
             UpdateCoinVisual();
         }
     }
+    private int _shopCoins;
+
+    public int ShopCoins
+    {
+        get { return _shopCoins; }
+        set {
+            if (value == _shopCoins)
+                return;
+            _shopCoins = value;
+            UpdateCoinVisual();
+        }
+    }
 
     private void UpdateCoinVisual()
     {
-        _coinsDisplayText.text = Coins.ToString();
+        _coinsDisplayText.text = InShop ? ShopCoins.ToString() : Coins.ToString();
     }
 
     [SerializeField] private int _startingCoins;
+
+    public int StartingCoins
+    {
+        get => _startingCoins;
+        set =>  _startingCoins = value;
+    }
     private void Start()
     {
         Coins = _startingCoins;

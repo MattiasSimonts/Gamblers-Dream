@@ -25,6 +25,6 @@ public class EnergyBar : Upgrade
 
     protected override string GetDescription()
     {
-        return "";
+        return "Slightly increases move speed";
     }
 }

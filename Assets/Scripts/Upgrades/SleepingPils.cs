@@ -25,6 +25,6 @@ public class SleepingPils : Upgrade
 
     protected override string GetDescription()
     {
-        return "Increases your total sleep time";
+        return $"Increases your total sleep time by {_amountExtraHealth}";
     }
 }

@@ -11,7 +11,7 @@ public class Blikje : Upgrade
 
     protected override string GetDescription()
     {
-        return $"Can: {_price} coins";
+        return $"Slightly Increases sprinting speed";
     }
 
     protected override string GetName()
@@ -26,6 +26,6 @@ public class Blikje : Upgrade
 
     protected override string GetTitle()
     {
-        return $"Can: {_price} coins";
+        return $"Can";
     }
 }

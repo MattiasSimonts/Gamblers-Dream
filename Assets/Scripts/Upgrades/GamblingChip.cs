@@ -25,6 +25,6 @@ public class GamblingChip : Upgrade
 
     protected override string GetTitle()
     {
-        return "";
+        return "Increases the amount of active machines";
     }
 }

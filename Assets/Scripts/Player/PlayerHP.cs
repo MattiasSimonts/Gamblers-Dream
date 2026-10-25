@@ -21,6 +21,15 @@ namespace Assets.Scripts.Player
         public event EventHandler OnHealthChanged;
         private float _health;
         [SerializeField] private float _dmgOverTime;
+
+        public float DamageOvertime
+        {
+            get => _dmgOverTime;
+            set => _dmgOverTime = Mathf.Max(value,0.1f);
+        }
+        
+
+        [SerializeField] private PlayerMovement _playerMovement;
         
 
         public float Health
@@ -78,6 +87,9 @@ namespace Assets.Scripts.Player
         {
             Debug.Log("You woke up");
 
+            _playerMovement.InShop = true;
+
+
             TransitionManager.Instance().Transition("NonDreamScene", _transition, 0);
         }
 
@@ -85,6 +97,7 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _health = _maxHealth;
+            _playerMovement = GetComponent<PlayerMovement>();
         }
         private void Update()
         {
