@@ -88,7 +88,6 @@ namespace Assets.Scripts.Player
             Debug.Log("You woke up");
 
             _playerMovement.InShop = true;
-            _playerMovement.ShopCoins += _playerMovement.Coins;
 
 
             TransitionManager.Instance().Transition("NonDreamScene", _transition, 0);
