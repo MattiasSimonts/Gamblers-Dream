@@ -8,6 +8,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -106,9 +107,28 @@ public class PlayerMovement : MonoBehaviour
         _interact.started += (e) => _isHoldingInteract = true;
 
         Cursor.lockState = CursorLockMode.Locked;
+        
+        if (Instance is not null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
     }
+    private void OnEnable()  => SceneManager.sceneLoaded += OnSceneLoaded;
+    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var spawn = GameObject.FindWithTag("PlayerSpawn");
+        if (spawn is not null)
+            transform.SetPositionAndRotation(spawn.transform.position, spawn.transform.rotation);
+
+    }
+    
     private void Interact(InputAction.CallbackContext obj)
     {
         if (Physics.Raycast(_playerCamera.transform.position, _playerCamera.transform.forward, out RaycastHit hitInfo, _interactionRange, _interactionLayer))
@@ -234,4 +254,7 @@ public class PlayerMovement : MonoBehaviour
 
         _cameraHolder.localRotation = Quaternion.Euler(_currentYAngle, 0f, 0f);
     }
+    private static PlayerMovement Instance { get; set; }
+
+
 }
