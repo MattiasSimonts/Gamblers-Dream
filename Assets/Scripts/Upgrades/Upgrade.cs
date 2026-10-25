@@ -13,9 +13,9 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
 
     public void OnInteract(PlayerMovement playerMovement)
     {
-        if (playerMovement.Coins < _price) return;
+        if (playerMovement.ShopCoins < _price) return;
         DoUpgrade(playerMovement);
-        playerMovement.Coins -= _price;
+        playerMovement.ShopCoins -= _price;
         HasPurchast = true;
         _amountOfPurchases++;
 

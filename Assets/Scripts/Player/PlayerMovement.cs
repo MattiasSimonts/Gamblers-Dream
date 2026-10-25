@@ -83,8 +83,17 @@ public class PlayerMovement : MonoBehaviour
         get { 
             return _inShop;
         }
-        set { 
+        set {
+            if (value == _inShop)
+                return;
+
             _inShop = value;
+
+            if (_inShop)
+            {
+                ShopCoins += Coins;
+                Coins = 0;
+            }
 
             UpdateCoinVisual();
         }
