@@ -259,7 +259,7 @@ public class SlotMachine : MonoBehaviour
         {
             _amountOfCoins = 1;
             print($"results = {_results[0]} {_results[1]} {_results[2]}\n" +
-                  $"Weights + {_rotationMap[_results[0]].Item2} {_rotationMap[_results[1]].Item2} {_rotationMap[_results[3]].Item2}\n" +
+                  $"Weights + {_rotationMap[_results[0]].Item2} {_rotationMap[_results[1]].Item2} {_rotationMap[_results[2]].Item2}\n" +
                   $"BaseCoins = {_baseAmountOfCoins} ");
         }
         _baseAmountOfCoins = 0;
