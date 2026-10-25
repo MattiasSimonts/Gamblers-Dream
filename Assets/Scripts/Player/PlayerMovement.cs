@@ -57,9 +57,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _coinsDisplayText;
     private int _coins;
 
+    public int CoinPickupUpgrades { get; set; } = 3;
+
     public int Coins
     {
-        get { return _coins; }
+        get => _coins;
         set
         {
             if (value == _coins)
@@ -159,7 +161,12 @@ public class PlayerMovement : MonoBehaviour
                 _lastInteractable = hoveringInteractable;
             }
             else
+
+            if (_lastInteractable is not null)
+            {
+                _leftClickToInteractText.text = _lastInteractable.InteractionName;
                 _leftClickToInteract.SetActive(_lastInteractable.CanInteract);
+            }
             
         }
         else

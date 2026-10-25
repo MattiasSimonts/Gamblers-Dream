@@ -8,7 +8,12 @@ public class PlayerUpgrades : MonoBehaviour
 
     public void IncreaseHealth(float amount)
     {
-        
+        _playerHP.MaxHealth += amount;
+    }
+
+    public void UpgradeCoinPickup()
+    {
+        _playerMovement.CoinPickupUpgrades++;
     }
     
 }
