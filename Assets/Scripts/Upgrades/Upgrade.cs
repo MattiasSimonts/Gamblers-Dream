@@ -7,6 +7,7 @@ public abstract class Upgrade : MonoBehaviour, IInteractable
 {
     [SerializeField] private PriceBoard _priceBoard;
     [SerializeField] protected int _price;
+    public int Price => _price;
     private bool HasPurchast = false;
     protected PlayerMovement _playerMovement;
 
