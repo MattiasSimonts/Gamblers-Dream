@@ -544,7 +544,7 @@ MonoBehaviour:
   _maxHealth: 100
   _audioDamageSource: {fileID: 3341285005947421103}
   _audioDamageResource: {fileID: 6418180475301049370, guid: 480e405ca2b9ee049afe930e8b560916, type: 2}
-  _impulsesource: {fileID: 0}
+  _impulsesource: {fileID: 3599839544010814896}
   _dmgOverTime: 0.5
   _playerMovement: {fileID: 0}
 --- !u!82 &8704235426664219168
