@@ -2,6 +2,7 @@
 using EasyTransition;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.Player
         [SerializeField] private AudioResource _audioDamageResource;
         public event EventHandler OnHealthChanged;
         private float _health;
+        [SerializeField] private float _dmgOverTime;
         
 
         public float Health
@@ -83,6 +85,10 @@ namespace Assets.Scripts.Player
         private void Start()
         {
             _health = _maxHealth;
+        }
+        private void Update()
+        {
+            Health -= _dmgOverTime * Time.deltaTime;
         }
 
         private static PlayerHP Instance { get; set; }
