@@ -458,6 +458,24 @@ MonoBehaviour:
   _moveSpeed: 0.04
   _accelartionSpeed: 0.5
   _deccelartionSpeed: 0.35
+  _get1000gold:
+    m_Name: Get 1000gold
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bc09418e-d2b6-4a65-a12e-fad44496efca
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 79765ce1-c311-413d-8d67-9cc3be192e98
+      m_Path: <Keyboard>/numpadMinus
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Get 1000gold
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
   SprintSpeed: 0.08
   _sprintAccelartionSpeed: 0.7
   _lookSens: 4
