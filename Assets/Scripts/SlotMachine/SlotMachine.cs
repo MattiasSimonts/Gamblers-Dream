@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using Assets.Scripts;
 using DG.Tweening;
@@ -66,6 +67,7 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private AudioResource _winSoundEffect;
 
     [SerializeField] private TextMeshProUGUI _slotmachineText;
+    [SerializeField] private ParticleSystem _confetti;
 
 
     public static SlotMachineManager Manager { get; set; }
@@ -186,6 +188,7 @@ public class SlotMachine : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
+            _confetti.Play();
             Transform coinSpewPosition = _coinSpewTransforms[Random.Range(0, _coinSpewTransforms.Length)];
             Quaternion rotation = Quaternion.Euler(Random.Range(0, 180), 0, Random.Range(0, 180));
             GameObject coin = Instantiate(_coinPrefab, coinSpewPosition.position, rotation);
