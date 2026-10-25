@@ -21,6 +21,12 @@ namespace Assets.Scripts.Player
         public event EventHandler OnHealthChanged;
         private float _health;
         [SerializeField] private float _dmgOverTime;
+
+        public float DamageOvertime
+        {
+            get => _dmgOverTime;
+            set => _dmgOverTime = Mathf.Max(value,0.1f);
+        }
         
 
         public float Health

@@ -5,7 +5,7 @@ public class KopKuzzen : Upgrade
     [SerializeField] private float _reduceDamageTaken = 0.1f;
     protected override void DoUpgrade(PlayerMovement playerMovement)
     {
-        
+        _playerMovement.DamageOvertime -= _reduceDamageTaken;
     }
 
     protected override string GetName()
