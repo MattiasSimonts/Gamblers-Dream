@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private float _startingHeight;
     [CanBeNull] private Collider _lastCollider;
     [CanBeNull] private IInteractable _lastInteractable;
-
+    
     private float _currentYAngle;
     private CharacterController _characterController;
     private bool _isSprinting;
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _coinsDisplayText;
     private int _coins;
 
-    public int CoinPickupUpgrades { get; set; } = 3;
+    public int CoinPickupUpgrades { get; set; } = 0;
 
     public int Coins
     {
@@ -160,13 +160,13 @@ public class PlayerMovement : MonoBehaviour
                 _lastCollider = hitInfo.collider;
                 _lastInteractable = hoveringInteractable;
             }
-            else
+            /*else
 
             if (_lastInteractable is not null)
             {
                 _leftClickToInteractText.text = _lastInteractable.InteractionName;
                 _leftClickToInteract.SetActive(_lastInteractable.CanInteract);
-            }
+            }*/
             
         }
         else
