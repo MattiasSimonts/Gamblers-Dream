@@ -267,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
     public void Reset()
     {
         Coins = _startingCoins;
-        _playerHP.Health = _playerHP.MaxHealth;
+        _playerHP.Reset();
     }
 
     private static PlayerMovement Instance { get; set; }

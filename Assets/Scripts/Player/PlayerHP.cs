@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player
             get => _maxHealth;
             set
             {
-                Health = value - _maxHealth;
+                //Health = value - _maxHealth;
                 _maxHealth = value;
             }
         }
