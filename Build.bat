@@ -7,7 +7,8 @@ set PROJECT=%~dp0.
 
 %UNITY% -batchmode -quit -nographics ^
   -projectPath "%PROJECT%" ^
-  -executeMethod BuildScript.BuildWindows ^
+  -executeMethod BuildScript.BuildWindows  ^
+  -logFile build.log 
 
 if %ERRORLEVEL% neq 0 (
   echo Build FAILED - see build.log

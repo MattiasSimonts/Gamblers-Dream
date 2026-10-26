@@ -9,7 +9,7 @@ public static class BuildScript
         var options = new BuildPlayerOptions
         {
             scenes = GetEnabledScenes(),
-            locationPathName = "Build/MyGame.exe",
+            locationPathName = "Build/Gambler's Dream.exe",
             target = BuildTarget.StandaloneWindows64,
             options = BuildOptions.None
         };
@@ -19,7 +19,7 @@ public static class BuildScript
         if (report.summary.result != BuildResult.Succeeded)
         {
             Debug.LogError("Build failed: " + report.summary.result);
-            EditorApplication.Exit(1);   // non-zero exit code so the batch file knows
+            EditorApplication.Exit(1); 
         }
     }
 
